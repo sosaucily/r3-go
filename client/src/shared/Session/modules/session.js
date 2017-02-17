@@ -26,7 +26,7 @@ export function toggleSessionForm() {
 }
 
 export function loginAsync({ email, password }) {
-  const endpoint = 'http://localhost:3001/v1/login'
+  const endpoint = `${API_URL}/v1/login`
   const body = { email: email, password: password, grant_type: 'password' }
 
   const callDescriptor = {

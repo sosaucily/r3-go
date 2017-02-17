@@ -28,3 +28,4 @@ git add client/dist
 git commit -m'compile js client for deploy'
 
 git push --force ghp `git subtree split --prefix client/dist HEAD`:master
+git reset --hard head~1

@@ -9,7 +9,10 @@ module.exports = {
   // are served webpack by to fix this issue:
   // http://stackoverflow.com/questions/34133808/webpack-ots-parsing-error-loading-fonts/34133809#34133809
   development : (config) => ({
-    compiler_public_path : `http://${config.server_host}:${config.server_port}/`
+    compiler_public_path : `http://${config.server_host}:${config.server_port}/`,
+    globals: Object.assign(config.globals, {
+      API_URL: JSON.stringify('http://localhost:3001')
+    })
   }),
 
   // ======================================================
@@ -24,6 +27,9 @@ module.exports = {
       chunks       : true,
       chunkModules : true,
       colors       : true
-    }
+    },
+    globals: Object.assign(config.globals, {
+      API_URL: JSON.stringify('https://fastrailsredux.herokuapp.com')
+    })
   })
 }
