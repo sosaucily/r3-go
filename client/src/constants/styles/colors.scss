@@ -1,0 +1,60 @@
+// Semantic Colors; USE THESE IN YOUR STYLESHEETS
+
+@import 'rawColors';
+
+$app-loading-background: $green;
+
+$background-bright: $white;
+$background-control-panel: $gray-lighter;
+$background-error: $red;
+$background-gradient: linear-gradient(284deg, $blue, $blue-light);
+$background-light: $gray-light;
+$background-nav: $blue;
+$background-nav-active: $blue-dark;
+$background-nav-logo: $green;
+$background-nav-toggle: $green-light;
+$background-overlay: $blue;
+$background-sub-header: $charcoal;
+$background-subtle: $gray-ultra-light;
+$background-success: $green;
+
+$box-shadow-inset: $gray-medium;
+
+$button-accent: $aqua;
+$button-accent-hover: $aqua-dark;
+$button-danger: $salmon;
+$button-primary: $green;
+$button-primary-hover: $green-dark;
+$button-subtle: $gray-regular;
+$button-subtle-hover: $gray-medium;
+
+$field-label: $gray-medium;
+
+$form-field-content: $gray-medium;
+
+$menu-border: $gray-light;
+$menu-text-light: $gray-dark;
+$menu-text-light-hover: darken($gray-dark, 20%);
+$menu-text-dark: $gray-light;
+$menu-text-dark-hover: darken($gray-light, 20%);
+
+$outline-accent: $green;
+$outine-primary: $gray-regular;
+$outline-secondary: $gray-medium;
+
+$shadow: rgba($black, .13);
+
+$tab-active: $gray-lighter;
+$tab-border: $gray-regular;
+$tab-inactive: $gray-regular-plus;
+
+$text-bright: $green;
+$text-button: $white;
+$text-list-name: $blue;
+$text-nav: $gray-regular;
+$text-nav-active: $white;
+$text-on-dark: $white;
+$text-placeholder: $gray-regular;
+$text-primary: $gray-medium;
+$text-terms-conditions: $gray-dark;
+$text-title: $gray-dark;

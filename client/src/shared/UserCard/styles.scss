@@ -1,0 +1,39 @@
+@import '~constants/styles/colors';
+@import '~constants/styles/fonts';
+@import '~constants/styles/fontSizes';
+
+.card {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+}
+
+.downArrow {
+  margin-left: 15px;
+}
+
+.nameTextBox {
+  margin-left: 15px;
+}
+
+.email {
+  color: $text-title;
+  font-family: $user-name;
+  line-height: 19px;
+  margin-bottom: 3px;
+}
+
+.companyName {
+  color: $text-bright;
+  font-family: $user-company;
+  font-size: $font-size-tiny;
+  letter-spacing: 2px;
+  line-height: 11px;
+  text-transform: uppercase;
+}
