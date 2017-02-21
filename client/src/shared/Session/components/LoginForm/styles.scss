@@ -1,0 +1,33 @@
+@import '~constants/styles/colors';
+
+.buttonContainer {
+  justify-content: center;
+  display: flex;
+}
+
+.error {
+  color: $background-error;
+  font-size: 1.2rem;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-display: row;
+  padding: 0 1rem 0 2rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.inputFields {
+  padding-right: 1rem;
+}
+
+.loginText {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}

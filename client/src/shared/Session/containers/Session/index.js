@@ -1,16 +1,16 @@
 import { connect } from 'react-redux'
 import { pick } from 'ramda'
-import { loginAsync, toggleSessionForm } from '../modules/session'
+import { loginAsync, toggleSessionDropdown } from '../../modules/session'
 
-import Session from '../components/Session'
+import Session from '../../components/Session'
 
 const mapDispatchToProps = {
   loginAsync,
-  toggleSessionForm
+  toggleSessionDropdown
 }
 
 const mapStateToProps = (state) => {
-  const keys = ['isLoggedIn', 'authToken', 'showSessionForm']
+  const keys = ['isLoggedIn', 'authToken', 'showSessionDropdown']
   return pick(keys, state.session)
 }
 

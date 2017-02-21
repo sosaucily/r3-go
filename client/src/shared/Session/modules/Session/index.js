@@ -1,5 +1,5 @@
 import { SubmissionError } from 'redux-form'
-import { callApi } from 'utils/api'
+import { callApi } from 'utils/helpers/api'
 
 // ------------------------------------
 // Constants
@@ -19,7 +19,7 @@ function loginFail({ payload }) {
   }
 }
 
-export function toggleSessionForm() {
+export function toggleSessionDropdown() {
   return {
     type: TOGGLE_SESSION_FORM
   }
@@ -27,7 +27,7 @@ export function toggleSessionForm() {
 
 export function loginAsync({ email, password }) {
   const endpoint = `${API_URL}/v1/login`
-  const body = { email: email, password: password, grant_type: 'password' }
+  const body = { email: email, password: password, grantType: 'password' }
 
   const callDescriptor = {
     endpoint: endpoint,
@@ -52,14 +52,14 @@ const ACTION_HANDLERS = {
       ...state,
       authToken: authToken,
       isLoggedIn: true,
-      showSessionForm: false
+      showSessionDropdown: false
     }
   },
   [SESSION_LOGIN_FAIL]: (state, { payload }) => {
     return {...state}
   },
   [TOGGLE_SESSION_FORM]: (state) => {
-    return { ...state, showSessionForm: !state.showSessionForm }
+    return { ...state, showSessionDropdown: !state.showSessionDropdown }
   }
 }
 
@@ -69,7 +69,7 @@ const ACTION_HANDLERS = {
 const initialState = {
   isLoggedIn: false,
   authToken: 'none',
-  showSessionForm: false
+  showSessionDropdown: false
 }
 
 export default function sessionReducer (state = initialState, action) {

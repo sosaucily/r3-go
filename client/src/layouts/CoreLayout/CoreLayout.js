@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer/containers/FooterContainer'
+import MessageBar from 'shared/MessageBar/containers'
 import classes from './CoreLayout.scss'
 import '../../styles/core.scss'
 
@@ -17,6 +18,7 @@ export default class CoreLayout extends Component {
         <div className={classes.mainContainer}>
           {this.props.children}
         </div>
+        <MessageBar />
         <Footer />
       </div>)
   }

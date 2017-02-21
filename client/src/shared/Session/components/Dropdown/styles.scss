@@ -1,0 +1,21 @@
+@import '~constants/styles/colors';
+@import '~constants/styles/fonts';
+
+$header-height: 72px;
+
+.container {
+  background-color: $background-bright;
+  box-shadow: 2px 2px 7px 0 $shadow;
+  display: flex;
+  font-family: $object-name;
+  justify-content: center;
+  min-width: 300px;
+  position: absolute;
+  right: 0px;
+  top: $header-height + 10;
+  z-index: 10;
+}
+
+.list {
+  width: 90%;
+}

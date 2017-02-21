@@ -3,13 +3,14 @@ import { browserHistory, IndexLink, Link } from 'react-router'
 import { addIndex, findIndex, equals, last, times } from 'ramda'
 import { Tab, Tabs } from 'react-toolbox'
 
+import AccountInfo from 'shared/AccountInfo'
 import ProductCard from 'shared/ProductCard'
 
-import styles from './HomeView.scss'
+import styles from './MyAccountView.scss'
 
-const navs = ['women', 'men', 'influencer', 'about']
+const navs = ['account', 'orders', 'contact']
 
-export default class HomeView extends Component {
+export default class MyAccountView extends Component {
   constructor(props) {
     super(props)
     const index = this.getIndexFromProps(props)
@@ -30,7 +31,8 @@ export default class HomeView extends Component {
 
   handleTabChange = (index) => {
     this.setState({tabIndex: index})
-    browserHistory.push(`/${navs[index]}`)
+    const path = index ? `/${navs[index]}` : '' //prevents /account/account
+    browserHistory.push(`/account${path}`)
   }
 
   render() {
@@ -41,21 +43,18 @@ export default class HomeView extends Component {
             className={styles.tabs}
             index={this.state.tabIndex}
             onChange={this.handleTabChange}>
-          <Tab label='Shop Women'>
+          <Tab label='My Account'>
+            <AccountInfo />
+          </Tab>
+          <Tab label='My Orders'>
             <div className={styles.cardContainer}>
-              {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 9)}
+              {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 3)}
             </div>
           </Tab>
-          <Tab label='Shop Men'>
+          <Tab label='Contact Info'>
             <div className={styles.cardContainer}>
-              {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 9)}
+              {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 3)}
             </div>
-          </Tab>
-          <Tab label='Become an influencer'>
-            Some stuff about how to sign up.
-          </Tab>
-          <Tab label='About us'>
-            More about our company
           </Tab>
         </Tabs>
       </div>

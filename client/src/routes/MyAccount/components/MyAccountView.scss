@@ -1,0 +1,11 @@
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.tabs {
+  section {
+    outline: none;
+  }
+}

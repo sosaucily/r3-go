@@ -3,11 +3,13 @@ import { apiMiddleware } from 'redux-api-middleware'
 import thunk from 'redux-thunk'
 import makeRootReducer from './reducers'
 
+import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling'
+
 export default (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [thunk, apiMiddleware]
+  const middleware = [thunk, apiMiddleware, apiErrorHandlingMidddlware]
 
   // ======================================================
   // Store Enhancers

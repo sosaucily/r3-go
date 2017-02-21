@@ -1,8 +1,12 @@
 // We only need to import the modules necessary for initial render
 import Home from './Home'
 import HomeView from './Home/components/HomeView'
-import MenRoute from './Men'
-import WomenRoute from './Women'
+import MenRoute from './Home/Men'
+import WomenRoute from './Home/Women'
+
+import MyAccountView from './MyAccount/components/MyAccountView'
+import OrdersRoute from './MyAccount/Orders'
+import ContactRoute from './MyAccount/Contact'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -14,8 +18,15 @@ export const createRoutes = (store) => ({
   childRoutes : [
     WomenRoute(store),
     MenRoute(store),
-    { path: 'influencer', component: HomeView },
-    { path: 'about', component: HomeView },
+    { path        : 'influencer', component: HomeView },
+    { path        : 'about', component: HomeView },
+    { path        : 'account',
+      component   : MyAccountView,
+      childRoutes : [
+        OrdersRoute(store),
+        ContactRoute(store)
+      ]
+    },
   ]
 })
 

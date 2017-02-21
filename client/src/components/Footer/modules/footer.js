@@ -1,4 +1,4 @@
-import { callApi } from 'utils/api'
+import { callApi } from 'utils/helpers/api'
 
 // ------------------------------------
 // Constants

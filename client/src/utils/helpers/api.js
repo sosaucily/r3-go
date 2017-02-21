@@ -4,19 +4,24 @@
 * - converting payload from decamelized/stringified format on the way out
 * - and camelized/objectized format on the way in
 * - attaches the required json headers
+* - includes auth token to backend server
 * - inherrited from https://github.com/CodingZeal/react-boilerplate
 */
 
 import { camelizeKeys, decamelizeKeys } from 'humps'
 import {
   adjust,
+  assoc,
   compose,
   contains,
   evolve,
   identity,
+  ifElse,
   map,
   merge,
-  mergeWith
+  mergeWith,
+  prop,
+  test
 } from 'ramda'
 import { CALL_API, ApiError, getJSON } from 'redux-api-middleware'
 
@@ -66,14 +71,22 @@ function tranformCallDescriptor(call, { getJson }) {
     merge({
       method: 'GET'
     }),
-    mergeWith(merge, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    ifElse(
+      compose(test(new RegExp(`^${API_URL}`)), prop('endpoint')), //Only include the auth token on reuqests to our server
+      mergeWith(merge, { headers: setHeaders() }),
+      mergeWith(merge, { headers: { 'Content-Type' : 'application/json' } })
+    )
   )
-
   return transform(call)
+}
+
+function setHeaders() {
+  return state => {
+    return {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${state.session.authToken}`
+    }
+  }
 }
 
 function tranformSuccessPayload(getJson) {
