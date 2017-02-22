@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     },
     path_names: {
       sign_in: 'v1/login',
+      sign_out: 'v1/logout'
       # password: 'forgot',
       # confirmation: 'confirm',
       # unlock: 'unblock',
       # sign_up: 'register',
-      # sign_out: 'signout'
     }
 
   namespace :v1, defaults: { format: :json } do

@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
 
 export default class AccountInfo extends Component {
+  constructor(props) {
+    super(props)
+    this.fetchUserInfo = this.props.fetchUserInfo
+  }
+
   componentDidMount() {
-    if(!this.props.name) {
-      this.props.fetchUserInfo()
+    this.fetchUserInfo()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!nextProps.isLoggedIn === this.props.isLoggedIn) {
+      this.fetchUserInfo()
     }
   }
 

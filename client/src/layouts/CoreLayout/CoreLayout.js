@@ -1,14 +1,22 @@
 import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 import Header from '../../components/Header'
 import Footer from '../../components/Footer/containers/FooterContainer'
 import MessageBar from 'shared/MessageBar/containers'
+
+import { readSessionCookie } from 'shared/Session/modules/Session'
+
 import classes from './CoreLayout.scss'
 import '../../styles/core.scss'
 
-export default class CoreLayout extends Component {
+class CoreLayout extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired
+  }
+
+  componentDidMount() {
+    this.props.readSessionCookie()
   }
 
   render () {
@@ -23,3 +31,5 @@ export default class CoreLayout extends Component {
       </div>)
   }
 }
+
+export default connect(null, { readSessionCookie })(CoreLayout)

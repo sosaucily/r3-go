@@ -1,7 +1,7 @@
 import React, { Component }  from 'react'
 import debounce from 'debounce'
 
-import Dropdown from '../Dropdown'
+import Dropdown from '../../containers/Dropdown'
 import UserCard from '../UserCard'
 
 import styles from './styles.scss'
@@ -16,16 +16,15 @@ export default class Session extends Component {
     const {
       isLoggedIn,
       authToken,
-      showSessionDropdown,
-      ...otherProps
+      showSessionDropdown
     } = this.props
 
-    const userCardText = isLoggedIn ? `Welcome ${authToken.substr(0,5)}` : 'Login'
+    const userCardText = isLoggedIn && authToken ? `Welcome ${authToken.substr(0,5)}` : 'Login'
 
     return (
       <div className={styles.container}>
         <UserCard className={styles.userCard} onClick={this.debouncedToggle} text={userCardText} />
-        {showSessionDropdown && <Dropdown onClickAway={this.debouncedToggle} isLoggedIn={isLoggedIn} {...otherProps} />}
+        {showSessionDropdown && <Dropdown onClickAway={this.debouncedToggle} />}
       </div>
     )
   }

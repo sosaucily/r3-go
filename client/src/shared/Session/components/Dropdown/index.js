@@ -7,9 +7,9 @@ import LoginForm from '../LoginForm'
 
 import styles from './styles.scss'
 
-function Dropdown({ isLoggedIn, loginAsync, onClickAway }) {
+function Dropdown({ isLoggedIn, login, logout, onClickAway }) {
   const loginForm = () => {
-    return <LoginForm onSubmit={loginAsync} onClickAway={onClickAway} />
+    return <LoginForm onSubmit={login} onClickAway={onClickAway} />
   }
 
   const userDropdown = () => {
@@ -21,7 +21,11 @@ function Dropdown({ isLoggedIn, loginAsync, onClickAway }) {
             onClick={() => { browserHistory.push('/account'); onClickAway() }} />
         <ListItem caption='Coming Soon' leftIcon='announcement' disabled />
         <ListDivider />
-        <ListItem caption='Log Out' leftIcon='exit_to_app' />
+        <ListItem
+            caption='LogOut'
+            leftIcon='exit_to_app'
+            onClick={logout}
+        />
       </List> )
   }
 

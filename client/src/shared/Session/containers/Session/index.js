@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 import { pick } from 'ramda'
-import { loginAsync, toggleSessionDropdown } from '../../modules/session'
+import { login, toggleSessionDropdown } from '../../modules/Session'
 
 import Session from '../../components/Session'
 
 const mapDispatchToProps = {
-  loginAsync,
+  login,
   toggleSessionDropdown
 }
 

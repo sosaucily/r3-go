@@ -9,8 +9,10 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => {
-  const keys = ['name']
-  return pick(keys, state.accountinfo)
+  return {
+    name: state.accountInfo.name,
+    isLoggedIn: state.session.isLoggedIn
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)

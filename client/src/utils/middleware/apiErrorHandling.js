@@ -6,7 +6,7 @@ const apiErrorHandlingMidddlware = store => next => action => {
   if (message) {
       store.dispatch(showMessageBarMessage(message))
   }
-  next(action)
+  return next(action)
 }
 
 function isUnauthorized(action) {

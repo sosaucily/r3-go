@@ -14,6 +14,10 @@ class SessionsController < Devise::SessionsController
     invalid_login_attempt
   end
 
+  def destroy
+    sign_out(resource_name)
+  end
+
   protected
   def invalid_login_attempt
     warden.custom_failure!
