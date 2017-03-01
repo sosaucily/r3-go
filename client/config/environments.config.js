@@ -29,7 +29,7 @@ module.exports = {
       colors       : true
     },
     globals: Object.assign(config.globals, {
-      API_URL: JSON.stringify('https://fastrailsredux.herokuapp.com')
+      API_URL: JSON.stringify('https://r3-go.herokuapp.com')
     })
   })
 }
