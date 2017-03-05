@@ -2,21 +2,26 @@ import { SubmissionError } from 'redux-form'
 import { callApi } from 'utils/helpers/api'
 import Cookies from 'js-cookie'
 import { evolve, not } from 'ramda'
-
-// ------------------------------------
-// Constants
-// ------------------------------------
-const SESSION_LOGIN_REQUEST = 'SESSION_LOGIN_REQUEST'
-const SESSION_LOGIN_SUCCESS = 'SESSION_LOGIN_SUCCESS'
-const SESSION_LOGIN_FAIL = 'SESSION_LOGIN_FAIL'
-const SESSION_LOGOUT_REQUEST = 'SESSION_LOGOUT_REQUEST'
-const SESSION_LOGOUT_SUCCESS = 'SESSION_LOGOUT_SUCCESS'
-const SESSION_LOGOUT_FAIL = 'SESSION_LOGOUT_FAIL'
-const TOGGLE_SESSION_FORM = 'TOGGLE_SESSION_FORM'
+import {
+  SESSION_LOGIN_REQUEST,
+  SESSION_LOGIN_SUCCESS,
+  SESSION_LOGIN_FAIL,
+  SESSION_LOGOUT_REQUEST,
+  SESSION_LOGOUT_SUCCESS,
+  SESSION_LOGOUT_FAIL,
+  TOGGLE_SESSION_FORM,
+  TOGGLE_SESSION_FORM_SAGA
+} from './constants'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
+
+export function toggleSessionDropdown() {
+  return {
+    type: TOGGLE_SESSION_FORM_SAGA
+  }
+}
 
 export function readSessionCookie() {
   return dispatch => {
@@ -31,12 +36,6 @@ function setSession(payload) {
   return {
     type: SESSION_LOGIN_SUCCESS,
     payload
-  }
-}
-
-export function toggleSessionDropdown() {
-  return {
-    type: TOGGLE_SESSION_FORM
   }
 }
 
@@ -104,7 +103,7 @@ const ACTION_HANDLERS = {
     return {...state}
   },
   [TOGGLE_SESSION_FORM]: (state) => {
-    return evolve({ showSessionDropdown: not}, state)
+    return evolve({ showSessionDropdown: not }, state)
   },
   [SESSION_LOGOUT_SUCCESS]: (state) => {
     return {

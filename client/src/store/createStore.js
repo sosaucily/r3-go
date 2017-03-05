@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { apiMiddleware } from 'redux-api-middleware'
 import thunk from 'redux-thunk'
 import createSagaMiddleware from 'redux-saga'
-import sagas from './sagas'
+import rootSaga from './sagas'
 import makeRootReducer from './reducers'
 
 import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling'
@@ -43,7 +43,7 @@ export default (initialState = {}) => {
     )
   )
   store.asyncReducers = {}
-  sagaMiddleware.run(sagas)
+  sagaMiddleware.run(rootSaga)
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
