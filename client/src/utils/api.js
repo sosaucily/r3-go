@@ -1,5 +1,6 @@
 import { merge } from 'ramda'
 import { camelizeKeys } from 'humps'
+import { ApiError } from 'redux-api-middleware'
 // import 'whatwg-fetch'
 
 const baseOptions =
@@ -46,7 +47,7 @@ function checkStatus(response) {
     return response;
   }
 
-  const error = new Error(response.statusText);
+  const error = new ApiError(response.statusText)
   error.response = response;
   throw error;
 }

@@ -4933,6 +4933,10 @@ redux-api-middleware@^1.0.2:
     isomorphic-fetch "^2.1.1"
     lodash.isplainobject "^3.2.0"
 
+redux-form-saga@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/redux-form-saga/-/redux-form-saga-0.1.0.tgz#61981098b4adf825796a971a6d14694741f97194"
+
 redux-form@^6.3.2:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/redux-form/-/redux-form-6.5.0.tgz#8c75ea77018afbabaa02f1389cf6b0e10787c5b8"

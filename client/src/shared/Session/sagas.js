@@ -1,11 +1,12 @@
 import { take, call, put, cancelled, cancel, fork } from 'redux-saga/effects';
 import { delay } from 'redux-saga'
+import { SubmissionError } from 'redux-form'
 import Cookies from 'js-cookie'
 
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_ERROR,
+  LOGIN_FAILURE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   TOGGLE_SESSION_FORM,
@@ -36,7 +37,14 @@ function* authorize(email, password) {
     yield call(setAuthCookie, payload)
     return payload.authToken
   } catch(error) {
-    yield put({type: LOGIN_ERROR, error})
+    yield put({
+      type: LOGIN_FAILURE,
+      payload: new SubmissionError(
+        { status: error.response.status,
+          message: error.response.statusText, 
+          _error: 'Login Failed' }
+      )
+    })
   } finally {
     if (yield cancelled()) {
       // ... put special cancellation handling code here
@@ -46,10 +54,10 @@ function* authorize(email, password) {
 
 export function* login() {
   while (true) {
-    const { email, password } = yield take(LOGIN_REQUEST)
+    const { payload: { email, password }} = yield take(LOGIN_REQUEST)
     const loginTask = yield fork(authorize, email, password)
-    // const action = yield take([LOGOUT_REQUEST, LOGIN_ERROR])
-    // if (action.type === LOGIN_ERROR)
+    // const action = yield take([LOGOUT_REQUEST, LOGIN_FAILURE])
+    // if (action.type === LOGIN_FAILURE)
       // ...
   }
 }

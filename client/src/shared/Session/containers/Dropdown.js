@@ -5,15 +5,17 @@ import { List, ListItem, ListDivider } from 'react-toolbox/lib/list'
 import { createStructuredSelector } from 'reselect'
 
 import { selectAuthToken, selectIsLoggedIn } from '../selectors'
-import { login, logout } from '../actions'
+import { LOGIN_FORM_ACTION_PREFIX, logout } from '../actions'
 import withClickAway from 'shared/ClickAway'
 import LoginForm from '../components/LoginForm'
 
 import styles from './styles.scss'
 
-function Dropdown({ isLoggedIn, login, logout, onClickAway }) {
+function Dropdown({ isLoggedIn, logout, onClickAway }) {
   const loginForm = () => {
-    return <LoginForm onSubmit={login} onClickAway={onClickAway} />
+    return <LoginForm
+                submitActionPrefix={LOGIN_FORM_ACTION_PREFIX}
+                onClickAway={onClickAway} />
   }
 
   const userDropdown = () => {
@@ -41,7 +43,7 @@ function Dropdown({ isLoggedIn, login, logout, onClickAway }) {
 }
 
 //Connect
-const mapDispatchToProps = { login, logout }
+const mapDispatchToProps = { logout }
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
   isLoggedIn: selectIsLoggedIn

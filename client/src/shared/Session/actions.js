@@ -6,15 +6,16 @@ import { evolve, not } from 'ramda'
 // ------------------------------------
 // Constants
 // ------------------------------------
-
-export const LOGIN_REQUEST = 'R3-GO/SESSIN/LOGIN_REQUEST'
-export const LOGIN_SUCCESS = 'R3-GO/SESSION/LOGIN_SUCCESS'
-export const LOGIN_ERROR = 'R3-GO/SESSION/LOGIN_ERROR'
-export const LOGOUT_REQUEST = 'R3-GO/SESSION/LOGOUT_REQUEST'
-export const LOGOUT_SUCCESS = 'R3-GO/SESSION/LOGOUT_SUCCESS'
-export const LOGOUT_ERROR = 'R3-GO/SESSION/LOGOUT_ERROR'
-export const TOGGLE_SESSION_FORM_SAGA = 'R3-GO/SESSION/TOGGLE_SESSION_FORM_SAGA'
-export const TOGGLE_SESSION_FORM = 'R3-GO/SESSION/TOGGLE_SESSION_FORM'
+const prefix = 'R3-GO/SESSION/'
+export const LOGIN_FORM_ACTION_PREFIX = `${prefix}LOGIN`
+export const LOGIN_REQUEST = `${prefix}LOGIN_REQUEST`
+export const LOGIN_SUCCESS = `${prefix}LOGIN_SUCCESS`
+export const LOGIN_FAILURE = `${prefix}LOGIN_FAILURE`
+export const LOGOUT_REQUEST = `${prefix}LOGOUT_REQUEST`
+export const LOGOUT_SUCCESS = `${prefix}LOGOUT_SUCCESS`
+export const LOGOUT_ERROR = `${prefix}LOGOUT_ERROR`
+export const TOGGLE_SESSION_FORM_SAGA = `${prefix}TOGGLE_SESSION_FORM_SAGA`
+export const TOGGLE_SESSION_FORM = `${prefix}TOGGLE_SESSION_FORM`
 
 // ------------------------------------
 // Actions
@@ -25,7 +26,7 @@ function action(type, payload = {}) {
 }
 
 export const toggleSessionDropdown = () => action(TOGGLE_SESSION_FORM_SAGA)
-export const login = creds => action(LOGIN_REQUEST, creds)
+// export const login = creds => action(LOGIN_REQUEST, creds)
 export const logout = () => action(LOGOUT_REQUEST)
 
 export function readSessionCookie() {
