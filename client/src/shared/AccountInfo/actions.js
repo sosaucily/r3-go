@@ -1,5 +1,4 @@
 import { SubmissionError } from 'redux-form'
-import { callApi } from 'utils/helpers/api'
 
 import { action } from 'utils/helpers/actions'
 

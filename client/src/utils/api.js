@@ -33,8 +33,12 @@ function authorize(email, password) {
 function fetchUserInfo(authToken) {
   const endpoint = `${API_URL}/v1/users`
   const mergedOptions = addAuth(authToken, baseOptions)
-  
+
   return request(endpoint, mergedOptions)
+}
+
+function genericRequest(url) {
+  return request(url)
 }
 
 /**
@@ -90,5 +94,6 @@ function request(url, options) {
 export default {
   authorize,
   deauthorize,
-  fetchUserInfo
+  fetchUserInfo,
+  genericRequest
 }

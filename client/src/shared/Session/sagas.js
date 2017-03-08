@@ -84,7 +84,9 @@ export function* readSessionCookie() {
 
 function* loadCookie() {
   const authToken = yield call(getAuthCookie)
-  yield put({type: LOGIN_SUCCESS, payload: { authToken }})
+  if (authToken) {
+    yield put({type: LOGIN_SUCCESS, payload: { authToken }})
+  }
 }
 
 // export function* sessionSaga Root

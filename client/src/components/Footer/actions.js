@@ -1,31 +1,16 @@
-import { callApi } from 'utils/helpers/api'
-
+import { action } from 'utils/helpers/actions'
 // ------------------------------------
 // Constants
 // ------------------------------------
-export const GET_SHA_REQUEST = 'GET_SHA_REQUEST'
-export const GET_SHA_SUCCESS = 'GET_SHA_SUCCESS'
-export const GET_SHA_FAILURE = 'GET_SHA_FAILURE'
-export const SET_SHA = 'SET_SHA'
+const prefix = 'R3-GO/FOOTER/'
+export const GET_SHA_REQUEST = `${prefix}GET_SHA_REQUEST`
+export const GET_SHA_SUCCESS = `${prefix}GET_SHA_SUCCESS`
+export const GET_SHA_FAILURE = `${prefix}GET_SHA_FAILURE`
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function getSha() {
-  return callApi({
-    endpoint: 'https://api.github.com/repos/sosaucily/sosaucily.github.io/git/refs',
-    types: [
-      GET_SHA_REQUEST,
-      GET_SHA_SUCCESS,
-      GET_SHA_FAILURE
-    ],
-    method: 'GET'}
-  )
-}
-
-export const actions = {
-  getSha
-}
+export const getSha = () => action(GET_SHA_REQUEST)
 
 // ------------------------------------
 // Action Handlers
