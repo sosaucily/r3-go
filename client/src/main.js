@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { browserHistory } from 'react-router'
+import 'regenerator-runtime/runtime' //Needed for redux-form-saga in createStore
 import createStore from './store/createStore'
 import AppContainer from './containers/AppContainer'
 

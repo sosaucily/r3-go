@@ -1,3 +1,3 @@
-import AccountInfo from './containers/'
+import AccountInfo from './containers/AccountInfo'
 
 export default AccountInfo

@@ -1,15 +1,18 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Button } from 'react-toolbox/lib/button'
+import { createFormAction } from 'redux-form-saga'
 
 import ReduxFormInput from 'shared/ReduxFormInput'
 
 import styles from './styles.scss'
 
-function SessionForm(props) {
-  const { error, handleSubmit, pristine, reset, submitting } = props
+function LoginForm(props) {
+  const { error, handleSubmit, submitActionPrefix, pristine, reset, submitting } = props
+  const formAction = createFormAction(submitActionPrefix)
+
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit(formAction)} className={styles.form}>
       <div className={styles.fieldContainer}>
         <Field
           name="email"
@@ -33,5 +36,5 @@ function SessionForm(props) {
 }
 
 export default reduxForm({
-  form: 'session'
-})(SessionForm)
+  form: 'login'
+})(LoginForm)

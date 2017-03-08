@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
 
-export default class AccountInfo extends Component {
+import { fetchUserInfo } from '../actions'
+import { selectName } from '../selectors'
+import { selectIsLoggedIn } from 'shared/Session/selectors'
+
+class AccountInfo extends Component {
   constructor(props) {
     super(props)
     this.fetchUserInfo = this.props.fetchUserInfo
@@ -24,3 +30,14 @@ export default class AccountInfo extends Component {
     return <div>{message}</div>
   }
 }
+
+const mapDispatchToProps = {
+  fetchUserInfo
+}
+
+const mapStateToProps = createStructuredSelector({
+    name: selectName,
+    isLoggedIn: selectIsLoggedIn
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)

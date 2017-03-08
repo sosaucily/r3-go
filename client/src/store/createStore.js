@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import { apiMiddleware } from 'redux-api-middleware'
-import thunk from 'redux-thunk'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
 import makeRootReducer from './reducers'
 
 import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling'
@@ -9,7 +10,14 @@ export default (initialState = {}) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
-  const middleware = [thunk, apiMiddleware, apiErrorHandlingMidddlware]
+  // create the saga middleware
+  const sagaMiddleware = createSagaMiddleware()
+
+  const middleware = [
+    apiMiddleware,
+    apiErrorHandlingMidddlware,
+    sagaMiddleware
+  ]
 
   // ======================================================
   // Store Enhancers
@@ -34,6 +42,9 @@ export default (initialState = {}) => {
     )
   )
   store.asyncReducers = {}
+  sagaMiddleware.run(rootSaga)
+
+  const action = type => store.dispatch({type})
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {
