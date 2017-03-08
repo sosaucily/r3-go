@@ -1,22 +1,24 @@
-import { take, call, put, cancelled, cancel, fork } from 'redux-saga/effects';
+import { take, takeEvery, call, put, cancelled, cancel, fork, select } from 'redux-saga/effects'
 import { delay } from 'redux-saga'
 import { SubmissionError } from 'redux-form'
 import Cookies from 'js-cookie'
 
+import { selectAuthToken } from 'shared/Session/selectors'
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
+  READ_SESSION_COOKIE,
   TOGGLE_SESSION_FORM,
-  TOGGLE_SESSION_FORM_SAGA
+  TOGGLE_SESSION_FORM_DELAY
 } from './actions'
 import Api from 'utils/api'
 
 export function* toggleSessionDropdown() {
   while (true) {
-    yield take(TOGGLE_SESSION_FORM_SAGA)
+    yield take(TOGGLE_SESSION_FORM_DELAY)
     yield put({type: TOGGLE_SESSION_FORM})
     yield call(delay, 300)
   }
@@ -26,8 +28,12 @@ function* setAuthCookie({ authToken }) {
   Cookies.set('authToken', authToken)
 }
 
-function clearAuthCookie() {
+function* clearAuthCookie() {
   Cookies.remove('authToken')
+}
+
+function* getAuthCookie() {
+  return Cookies.get('authToken')
 }
 
 function* authorize(email, password) {
@@ -41,7 +47,7 @@ function* authorize(email, password) {
       type: LOGIN_FAILURE,
       payload: new SubmissionError(
         { status: error.response.status,
-          message: error.response.statusText, 
+          message: error.response.statusText,
           _error: 'Login Failed' }
       )
     })
@@ -65,15 +71,26 @@ export function* login() {
 export function* logout() {
   while (true) {
     yield take(LOGOUT_REQUEST)
+    const authToken = yield select(selectAuthToken)
+    const resp = yield fork(Api.deauthorize, authToken)
     yield call(clearAuthCookie)
-    const resp = yield call(Api.deauthorize)
     yield put({type: LOGOUT_SUCCESS})
   }
+}
+
+export function* readSessionCookie() {
+  yield takeEvery(READ_SESSION_COOKIE, loadCookie)
+}
+
+function* loadCookie() {
+  const authToken = yield call(getAuthCookie)
+  yield put({type: LOGIN_SUCCESS, payload: { authToken }})
 }
 
 // export function* sessionSaga Root
 export default [
   login,
   logout,
+  readSessionCookie,
   toggleSessionDropdown
 ]

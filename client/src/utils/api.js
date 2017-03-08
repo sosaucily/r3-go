@@ -1,19 +1,25 @@
-import { merge } from 'ramda'
 import { camelizeKeys } from 'humps'
 import { ApiError } from 'redux-api-middleware'
+import {
+  compose,
+  ifElse,
+  merge,
+  mergeWith,
+  test
+} from 'ramda'
+
+import { selectAuthToken } from 'shared/Session/selectors'
 // import 'whatwg-fetch'
 
 const baseOptions =
-  {  method: 'GET',
-     headers: {
-       'Content-Type': 'application/json' }
-  }
+  { method: 'GET',
+    headers: {'Content-Type': 'application/json' }}
 
-function deauthorize() {
+function deauthorize(authToken) {
   const endpoint = `${API_URL}/v1/logout`
-  const mergedOptions = merge(baseOptions, { method: 'DELETE' })
+  const mergedOptions = addAuth(authToken, merge(baseOptions, { method: 'DELETE' }))
 
-  return fetch(endpoint, mergedOptions).then(checkStatus)
+  return fetch(endpoint, mergedOptions, authToken).then(checkStatus)
 }
 
 function authorize(email, password) {
@@ -21,6 +27,13 @@ function authorize(email, password) {
   const body = JSON.stringify({ email: email, password: password, grantType: 'password' })
   const mergedOptions = merge(baseOptions, { method: 'POST', body })
 
+  return request(endpoint, mergedOptions)
+}
+
+function fetchUserInfo(authToken) {
+  const endpoint = `${API_URL}/v1/users`
+  const mergedOptions = addAuth(authToken, baseOptions)
+  
   return request(endpoint, mergedOptions)
 }
 
@@ -52,6 +65,13 @@ function checkStatus(response) {
   throw error;
 }
 
+function addAuth(authToken, options) {
+  const newOptions = mergeWith(merge, { headers: {
+    Authorization: `Bearer ${authToken}`
+  }}, options)
+  return newOptions
+}
+
 /**
  * Requests a URL, returning a promise
  *
@@ -69,5 +89,6 @@ function request(url, options) {
 
 export default {
   authorize,
-  deauthorize
+  deauthorize,
+  fetchUserInfo
 }

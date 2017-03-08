@@ -1,47 +1,33 @@
 import { SubmissionError } from 'redux-form'
 import { callApi } from 'utils/helpers/api'
 
+import { action } from 'utils/helpers/actions'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
-const FETCH_ACCOUNT_REQUEST = 'FETCH_ACCOUNT_REQUEST'
-const FETCH_ACCOUNT_SUCCESS = 'FETCH_ACCOUNT_SUCCESS'
-const FETCH_ACCOUNT_FAIL = 'FETCH_ACCOUNT_FAIL'
+const prefix = 'R3-GO/AccountInfo/'
+export const FETCH_ACCOUNT_REQUEST = `${prefix}FETCH_ACCOUNT_REQUEST`
+export const FETCH_ACCOUNT_SUCCESS = `${prefix}FETCH_ACCOUNT_SUCCESS`
+export const FETCH_ACCOUNT_FAILURE = `${prefix}FETCH_ACCOUNT_FAILURE`
 
 // ------------------------------------
 // Actions
 // ------------------------------------
 
-export function fetchUserInfo() {
-  const endpoint = `${API_URL}/v1/users`
-
-  const callDescriptor = {
-    endpoint: endpoint,
-    method: 'GET',
-    types: [
-      'FETCH_ACCOUNT_REQUEST',
-      'FETCH_ACCOUNT_SUCCESS',
-      'FETCH_ACCOUNT_FAIL'
-    ]
-  }
-
-  return callApi(callDescriptor)
-}
+export const fetchUserInfo = () => action(FETCH_ACCOUNT_REQUEST)
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [FETCH_ACCOUNT_REQUEST]: (state, payload) => {
-    return {...state}
-  },
   [FETCH_ACCOUNT_SUCCESS]: (state, { payload }) => {
     return {
       ...state,
       name: payload[0].email,
     }
   },
-  [FETCH_ACCOUNT_FAIL]: (state, payload) => {
+  [FETCH_ACCOUNT_FAILURE]: (state, payload) => {
     return {
       ...state,
       name: ''

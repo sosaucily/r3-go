@@ -1,3 +1,5 @@
+import { action } from 'utils/helpers/actions'
+
 // ------------------------------------
 // Constants
 // ------------------------------------
@@ -7,31 +9,18 @@ const CLEAR_MESSAGE = 'CLEAR_MESSAGE'
 // ------------------------------------
 // Actions
 // ------------------------------------
-
-export function showMessageBarMessage(message) {
-  return {
-    type: API_ERROR,
-    payload: {
-      message
-    }
-  }
-}
-
-export function clearMessage() {
-  return {
-    type: CLEAR_MESSAGE
-  }
-}
+export const showMessageBarMessage = message => action(API_ERROR, { message })
+export const clearMessage = () => action(CLEAR_MESSAGE)
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [API_ERROR]: (state, { payload }) => {
+  [API_ERROR]: (state, { message }) => {
     return {
       ...state,
       active: true,
-      message: payload.message
+      message
     }
   },
   [CLEAR_MESSAGE]: (state) => {
