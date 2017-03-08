@@ -1,12 +1,9 @@
-import { toggleSessionDropdown } from 'shared/Session/modules/Session/sagas'
-
-export function* helloSaga() {
-  console.log('Hello Sagas!')
-}
+import { login, logout, toggleSessionDropdown } from 'shared/Session/sagas'
 
 export default function* rootSaga() {
   yield [
-    helloSaga(),
+    login(),
+    logout(),
     toggleSessionDropdown()
   ]
 }

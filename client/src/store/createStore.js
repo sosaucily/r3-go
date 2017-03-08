@@ -44,6 +44,8 @@ export default (initialState = {}) => {
   )
   store.asyncReducers = {}
   sagaMiddleware.run(rootSaga)
+  
+  const action = type => store.dispatch({type})
 
   if (module.hot) {
     module.hot.accept('./reducers', () => {

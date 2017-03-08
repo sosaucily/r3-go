@@ -1,9 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import { List, ListItem, ListDivider } from 'react-toolbox/lib/list'
+import { createStructuredSelector } from 'reselect'
 
+import { selectAuthToken, selectIsLoggedIn } from '../selectors'
+import { login, logout } from '../actions'
 import withClickAway from 'shared/ClickAway'
-import LoginForm from '../LoginForm'
+import LoginForm from '../components/LoginForm'
 
 import styles from './styles.scss'
 
@@ -30,10 +34,19 @@ function Dropdown({ isLoggedIn, login, logout, onClickAway }) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.dropdown_container}>
       { isLoggedIn ? userDropdown() : loginForm() }
     </div>
   )
 }
 
-export default withClickAway(Dropdown)
+//Connect
+const mapDispatchToProps = { login, logout }
+const mapStateToProps = createStructuredSelector({
+  authToken: selectAuthToken,
+  isLoggedIn: selectIsLoggedIn
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withClickAway(Dropdown)
+)

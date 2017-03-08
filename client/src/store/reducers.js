@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form'
 
 import accountInfo from '../shared/AccountInfo/modules'
 import messageBar from '../shared/MessageBar/modules'
-import session from '../shared/Session/modules/Session'
+import session from '../shared/Session/actions'
 import footer from '../components/Footer/modules/footer'
 
 export const makeRootReducer = (asyncReducers) => {

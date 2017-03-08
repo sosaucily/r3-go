@@ -5,7 +5,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer/containers/FooterContainer'
 import MessageBar from 'shared/MessageBar/containers'
 
-import { readSessionCookie } from 'shared/Session/modules/Session'
+import { readSessionCookie } from 'shared/Session/actions'
 
 import classes from './CoreLayout.scss'
 import '../../styles/core.scss'
