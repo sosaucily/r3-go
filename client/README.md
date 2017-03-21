@@ -1,221 +1,152 @@
-# React Redux Starter Kit
+<img src="https://raw.githubusercontent.com/react-boilerplate/react-boilerplate-brand/master/assets/banner-metal-optimized.jpg" alt="react boilerplate banner" align="center" />
 
-[![Join the chat at https://gitter.im/davezuko/react-redux-starter-kit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/davezuko/react-redux-starter-kit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/davezuko/react-redux-starter-kit.svg?branch=master)](https://travis-ci.org/davezuko/react-redux-starter-kit?branch=master)
-[![dependencies](https://david-dm.org/davezuko/react-redux-starter-kit.svg)](https://david-dm.org/davezuko/react-redux-starter-kit)
-[![devDependency Status](https://david-dm.org/davezuko/react-redux-starter-kit/dev-status.svg)](https://david-dm.org/davezuko/react-redux-starter-kit#info=devDependencies)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+<br />
 
-This starter kit is designed to get you up and running with a bunch of awesome new front-end technologies, all on top of a configurable, feature-rich webpack build system that's already setup to provide hot reloading, CSS preprocessing with Sass, unit testing, code coverage reports, bundle splitting, and more.
+<div align="center"><strong>Start your next react project in seconds</strong></div>
+<div align="center">A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices</div>
 
-The primary goal of this project is to remain as **unopinionated** as possible. Its purpose is not to dictate your project structure or to demonstrate a complete sample application, but to provide a set of tools intended to make front-end development robust, easy, and, most importantly, fun. Check out the full feature list below!
+<br />
 
-Finally, This project wouldn't be possible without the help of our many contributors, so [thank you](#thank-you) for all of your help.
+<div align="center">
+  <!-- Dependency Status -->
+  <a href="https://david-dm.org/react-boilerplate/react-boilerplate">
+    <img src="https://david-dm.org/react-boilerplate/react-boilerplate.svg" alt="Dependency Status" />
+  </a>
+  <!-- devDependency Status -->
+  <a href="https://david-dm.org/react-boilerplate/react-boilerplate#info=devDependencies">
+    <img src="https://david-dm.org/react-boilerplate/react-boilerplate/dev-status.svg" alt="devDependency Status" />
+  </a>
+  <!-- Build Status -->
+  <a href="https://travis-ci.org/react-boilerplate/react-boilerplate">
+    <img src="https://travis-ci.org/react-boilerplate/react-boilerplate.svg" alt="Build Status" />
+  </a>
+  <!-- Test Coverage -->
+  <a href="https://coveralls.io/r/react-boilerplate/react-boilerplate">
+    <img src="https://coveralls.io/repos/github/react-boilerplate/react-boilerplate/badge.svg" alt="Test Coverage" />
+  </a>
+</div>
+<div align="center">
+    <!-- Backers -->
+  <a href="#backers">
+    <img src="https://opencollective.com/react-boilerplate/backers/badge.svg" alt="Backers" />
+  </a>
+      <!-- Sponsors -->
+  <a href="#sponsors">
+    <img src="https://opencollective.com/react-boilerplate/sponsors/badge.svg" alt="Sponsors" />
+  </a>
+  <a href="http://thinkmill.com.au/?utm_source=github&utm_medium=badge&utm_campaign=react-boilerplate">
+    <img alt="Supported by Thinkmill" src="https://thinkmill.github.io/badge/heart.svg" />
+  </a>
+  <!-- Gitter -->
+  <a href="https://gitter.im/mxstbr/react-boilerplate">
+    <img src="https://camo.githubusercontent.com/54dc79dc7da6b76b17bc8013342da9b4266d993c/68747470733a2f2f6261646765732e6769747465722e696d2f6d78737462722f72656163742d626f696c6572706c6174652e737667" alt="Gitter Chat" />
+  </a>
+</div>
 
-## Table of Contents
-1. [Features](#features)
-1. [Requirements](#requirements)
-1. [Getting Started](#getting-started)
-1. [Application Structure](#application-structure)
-1. [Development](#development)
-  1. [Developer Tools](#developer-tools)
-  1. [Routing](#routing)
-1. [Testing](#testing)
-1. [Deployment](#deployment)
-1. [Build System](#build-system)
-  1. [Configuration](#configuration)
-  1. [Globals](#globals)
-  1. [Styles](#styles)
-  1. [Server](#server)
-  1. [Production Optimization](#production-optimization)
-1. [Learning Resources](#learning-resources)
-1. [FAQ](#troubleshooting)
-1. [Thank You](#thank-you)
+<br />
+
+<div align="center">
+  <sub>Created by <a href="https://twitter.com/mxstbr">Max Stoiber</a> and maintained with ❤️ by an amazing <a href="https://github.com/orgs/react-boilerplate/teams/core">team of developers</a>.</sub>
+</div>
 
 ## Features
-* [react](https://github.com/facebook/react)
-* [redux](https://github.com/rackt/redux)
-* [react-router](https://github.com/rackt/react-router)
-* [webpack](https://github.com/webpack/webpack)
-* [babel](https://github.com/babel/babel)
-* [express](https://github.com/expressjs/express)
-* [karma](https://github.com/karma-runner/karma)
-* [eslint](http://eslint.org)
 
-## Requirements
-* node `^4.5.0`
-* yarn `^0.17.0` or npm `^3.0.0`
+<dl>
+  <dt>Quick scaffolding</dt>
+  <dd>Create components, containers, routes, selectors and sagas - and their tests - right from the CLI!</dd>
 
-## Getting Started
+  <dt>Instant feedback</dt>
+  <dd>Enjoy the best DX (Developer eXperience) and code your app at the speed of thought! Your saved changes to the CSS and JS are reflected instantaneously without refreshing the page. Preserve application state even when you update something in the underlying code!</dd>
 
-After confirming that your development environment meets the specified [requirements](#requirements), you can create a new project based on `react-redux-starter-kit` by doing the following:
+  <dt>Predictable state management</dt>
+  <dd>Unidirectional data flow allows for change logging and time travel debugging.</dd>
 
-### Install from source
+  <dt>Next generation JavaScript</dt>
+  <dd>Use template strings, object destructuring, arrow functions, JSX syntax and more, today.</dd>
 
-First, clone the project:
+  <dt>Next generation CSS</dt>
+  <dd>Write composable CSS that's co-located with your components for complete modularity. Unique generated class names keep the specificity low while eliminating style clashes. Ship only the styles that are on the page for the best performance.</dd>
 
-```bash
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git <my-project-name>
-$ cd <my-project-name>
-```
+  <dt>Industry-standard routing</dt>
+  <dd>It's natural to want to add pages (e.g. `/about`) to your application, and routing makes this possible.</dd>
 
-Then install dependencies and check to see it works. It is recommended that you use [Yarn](https://yarnpkg.com/) for deterministic installs, but `npm install` will work just as well.
+  <dt>Industry-standard i18n internationalization support</dt>
+  <dd>Scalable apps need to support multiple languages, easily add and support multiple languages with `react-intl`.</dd>
 
-```bash
-$ yarn install    # Install project dependencies
-$ npm start       # Compile and launch
-```
-If everything works, you should see the following:
+  <dt>Offline-first</dt>
+  <dd>The next frontier in performant web apps: availability without a network connection from the instant your users load the app.</dd>
 
-<img src="http://i.imgur.com/Kk2qTHC.png" />
+  <dt>SEO</dt>
+  <dd>We support SEO (document head tags management) for search engines that support indexing of JavaScript content. (eg. Google)</dd>
+</dl>
 
-While developing, you will probably rely mostly on `npm start`; however, there are additional scripts at your disposal:
+But wait... there's more!
 
-|`npm run <script>`|Description|
-|------------------|-----------|
-|`start`|Serves your app at `localhost:3000`. HMR will be enabled in development.|
-|`compile`|Compiles the application to disk (`~/dist` by default).|
-|`dev`|Same as `npm start`, but enables nodemon for the server as well.|
-|`test`|Runs unit tests with Karma and generates a coverage report.|
-|`test:dev`|Runs Karma and watches for changes to re-run tests; does not generate coverage reports.|
-|`deploy`|Runs linter, tests, and then, on success, compiles your application to disk.|
-|`deploy:dev`|Same as `deploy` but overrides `NODE_ENV` to "development".|
-|`deploy:prod`|Same as `deploy` but overrides `NODE_ENV` to "production".|
-|`lint`|Lint all `.js` files.|
-|`lint:fix`|Lint and fix all `.js` files. [Read more on this](http://eslint.org/docs/user-guide/command-line-interface.html#fix).|
+  - *The best test setup:* Automatically guarantee code quality and non-breaking
+    changes. (Seen a react app with 99% test coverage before?)
+  - *Native web app:* Your app's new home? The home screen of your users' phones.
+  - *The fastest fonts:* Say goodbye to vacant text.
+  - *Stay fast*: Profile your app's performance from the comfort of your command
+    line!
+  - *Catch problems:* AppVeyor and TravisCI setups included by default, so your
+    tests get run automatically on Windows and Unix.
 
-## Application Structure
+There’s also a <a href="https://vimeo.com/168648012">fantastic video</a> on how to structure your React.js apps with scalability in mind. It provides rationale for the majority of boilerplate's design decisions.
 
-The application structure presented in this boilerplate is **fractal**, where functionality is grouped primarily by feature rather than file type. Please note, however, that this structure is only meant to serve as a guide, it is by no means prescriptive. That said, it aims to represent generally accepted guidelines and patterns for building scalable applications. If you wish to read more about this pattern, please check out this [awesome writeup](https://github.com/davezuko/react-redux-starter-kit/wiki/Fractal-Project-Structure) by [Justin Greenberg](https://github.com/justingreenberg).
+<sub><i>Keywords: React.js, Redux, Hot Reloading, ESNext, Babel, react-router, Offline First, ServiceWorker, `styled-components`, redux-saga, FontFaceObserver</i></sub>
 
-```
-.
-├── bin                      # Build/Start scripts
-├── config                   # Project and build configurations
-├── public                   # Static public assets (not imported anywhere in source code)
-├── server                   # Express application that provides webpack middleware
-│   └── main.js              # Server application entry point
-├── src                      # Application source code
-│   ├── index.html           # Main HTML page container for app
-│   ├── main.js              # Application bootstrap and rendering
-│   ├── components           # Global Reusable Presentational Components
-│   ├── containers           # Global Reusable Container Components
-│   ├── layouts              # Components that dictate major page structure
-│   │   └── CoreLayout.js    # CoreLayout which receives children for each route
-│   │   └── CoreLayout.scss  # Styles related to the CoreLayout
-│   │   └── index.js         # Main file for layout
-│   ├── routes               # Main route definitions and async split points
-│   │   ├── index.js         # Bootstrap main application routes with store
-│   │   ├── Home             # Fractal route
-│   │   │   ├── index.js     # Route definitions and async split points
-│   │   │   ├── assets       # Assets required to render components
-│   │   │   ├── components   # Presentational React Components
-│   │   │   └── routes **    # Fractal sub-routes (** optional)
-│   │   └── Counter          # Fractal route
-│   │       ├── index.js     # Counter route definition
-│   │       ├── container    # Connect components to actions and store
-│   │       ├── modules      # Collections of reducers/constants/actions
-│   │       └── routes **    # Fractal sub-routes (** optional)
-│   ├── store                # Redux-specific pieces
-│   │   ├── createStore.js   # Create and instrument redux store
-│   │   └── reducers.js      # Reducer registry and injection
-│   └── styles               # Application-wide styles (generally settings)
-└── tests                    # Unit tests
-```
+## Quick start
 
-## Development
+1. Clone this repo using `git clone --depth=1 https://github.com/react-boilerplate/react-boilerplate.git`
+1. Run `npm run setup` to install dependencies and clean the git repo.<br />
+   *We auto-detect `yarn` for installing packages by default, if you wish to force `npm` usage do: `USE_YARN=false npm run setup`*<br />
+   *At this point you can run `npm start` to see the example app at `http://localhost:3000`.*
+1. Run `npm run clean` to delete the example app.
 
-#### Developer Tools
+Now you're ready to rumble!
 
-**We recommend using the [Redux DevTools Chrome Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd).**
-Using the chrome extension allows your monitors to run on a separate thread and affords better performance and functionality. It comes with several of the most popular monitors, is easy to configure, filters actions, and doesn’t require installing any packages.
+> Please note that this boilerplate is **production-ready and not meant for beginners**! If you're just starting out with react or redux, please refer to https://github.com/petehunt/react-howto instead. If you want a solid, battle-tested base to build your next product upon and have some experience with react, this is the perfect start for you.
 
-However, adding the DevTools components to your project is simple. First, grab the packages from npm:
+## Documentation
 
-```bash
-npm i --save-dev redux-devtools redux-devtools-log-monitor redux-devtools-dock-monitor
-```
+- [**The Hitchhikers Guide to `react-boilerplate`**](docs/general/introduction.md): An introduction for newcomers to this boilerplate.
+- [Overview](docs/general): A short overview of the included tools
+- [**Commands**](docs/general/commands.md): Getting the most out of this boilerplate
+- [Testing](docs/testing): How to work with the built-in test harness
+- [Styling](docs/css): How to work with the CSS tooling
+- [Your app](docs/js): Supercharging your app with Routing, Redux, simple
+  asynchronicity helpers, etc.
 
-Then follow the [manual integration walkthrough](https://github.com/gaearon/redux-devtools/blob/master/docs/Walkthrough.md).
+## Supporters
 
-### Routing
-We use `react-router` [route definitions](https://github.com/reactjs/react-router/blob/master/docs/API.md#plainroute) (`<route>/index.js`) to define units of logic within our application. See the [application structure](#application-structure) section for more information.
+This project would not be possible without the support by these amazing folks. [**Become a sponsor**](https://opencollective.com/react-boilerplate) to get your company in front of thousands of engaged react developers and help us out!
 
-## Testing
-To add a unit test, simply create a `.spec.js` file anywhere in `~/tests`. Karma will pick up on these files automatically, and Mocha and Chai will be available within your test without the need to import them. Coverage reports will be compiled to `~/coverage` by default. If you wish to change what reporters are used and where reports are compiled, you can do so by modifying `coverage_reporters` in `~/config/project.config.js`.
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/0/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/1/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/2/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/3/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/4/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/5/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/6/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/7/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/8/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/bronze-sponsor/9/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/bronze-sponsor/9/avatar.svg"></a>
 
-## Deployment
-Out of the box, this starter kit is deployable by serving the `~/dist` folder generated by `npm run deploy` (make sure to specify your target `NODE_ENV` as well). This project does not concern itself with the details of server-side rendering or API structure, since that demands an opinionated structure that makes it difficult to extend the starter kit. However, if you do need help with more advanced deployment strategies, here are a few tips:
+----
 
-### Static Deployments
-If you are serving the application via a web server such as nginx, make sure to direct incoming routes to the root `~/dist/index.html` file and let react-router take care of the rest. If you are unsure of how to do this, you might find [this documentation](https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md#configuring-your-server) helpful. The Express server that comes with the starter kit is able to be extended to serve as an API or whatever else you need, but that's entirely up to you.
+<a href="https://opencollective.com/react-boilerplate/backer/0/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/0/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/1/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/1/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/2/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/2/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/3/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/3/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/4/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/4/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/5/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/5/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/6/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/6/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/7/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/7/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/8/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/8/avatar.svg"></a>
+<a href="https://opencollective.com/react-boilerplate/backer/9/website" target="_blank"><img src="https://opencollective.com/react-boilerplate/backer/9/avatar.svg"></a>
 
-## Build System
 
-### Configuration
+## License
 
-Default project configuration can be found in `~/config/project.config.js`. Here you'll be able to redefine your `src` and `dist` directories, adjust compilation settings, tweak your vendor dependencies, and more. For the most part, you should be able to make changes in here **without ever having to touch the actual webpack build configuration**.
-
-If you need environment-specific overrides (useful for dynamically setting API endpoints, for example), you can edit `~/config/environments.config.js` and define overrides on a per-NODE_ENV basis. There are examples for both `development` and `production`, so use those as guidelines. Here are some common configuration options:
-
-|Key|Description|
-|---|-----------|
-|`dir_src`|application source code base path|
-|`dir_dist`|path to build compiled application to|
-|`server_host`|hostname for the Express server|
-|`server_port`|port for the Express server|
-|`compiler_devtool`|what type of source-maps to generate (set to `false`/`null` to disable)|
-|`compiler_vendor`|packages to separate into to the vendor bundle|
-
-Webpack is configured to make use of [resolve.root](http://webpack.github.io/docs/configuration.html#resolve-root), which lets you import local packages as if you were traversing from the root of your `~/src` directory. Here's an example:
-
-```js
-// current file: ~/src/views/some/nested/View.js
-// What used to be this:
-import SomeComponent from '../../../components/SomeComponent'
-
-// Can now be this:
-import SomeComponent from 'components/SomeComponent' // Hooray!
-```
-
-### Globals
-
-These are global variables available to you anywhere in your source code. If you wish to modify them, they can be found as the `globals` key in `~/config/project.config.js`. When adding new globals, make sure you also add them to `~/.eslintrc`.
-
-|Variable|Description|
-|---|---|
-|`process.env.NODE_ENV`|the active `NODE_ENV` when the build started|
-|`__DEV__`|True when `process.env.NODE_ENV` is `development`|
-|`__PROD__`|True when `process.env.NODE_ENV` is `production`|
-|`__TEST__`|True when `process.env.NODE_ENV` is `test`|
-
-### Styles
-
-Both `.scss` and `.css` file extensions are supported out of the box. After being imported, styles will be processed with [PostCSS](https://github.com/postcss/postcss) for minification and autoprefixing, and will be extracted to a `.css` file during production builds.
-
-### Server
-
-This starter kit comes packaged with an Express server. It's important to note that the sole purpose of this server is to provide `webpack-dev-middleware` and `webpack-hot-middleware` for hot module replacement. Using a custom Express app in place of [webpack-dev-server](https://github.com/webpack/webpack-dev-server) makes it easier to extend the starter kit to include functionality such as API's, universal rendering, and more -- all without bloating the base boilerplate.
-
-### Production Optimization
-
-Babel is configured to use [babel-plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime) so transforms aren't inlined. In production, webpack will extract styles to a `.css` file, minify your JavaScript, and perform additional optimizations such as module deduplication.
-
-## Learning Resources
-
-* [Starting out with react-redux-starter-kit](https://suspicious.website/2016/04/29/starting-out-with-react-redux-starter-kit/) is an introduction to the components used in this starter kit with a small example in the end.
-
-## FAQ
-
-Having trouble? Check out our [FAQ](https://github.com/davezuko/react-redux-starter-kit/wiki/FAQ:-Frequently-Asked-Questions) or submit an issue. Please be considerate by only posting issues that are directly related to this project; questions about how to implement certain React or Redux features are both best suited for StackOverflow or their respective repositories.
-
-## Thank You
-
-This project wouldn't be possible without help from the community, so I'd like to highlight some of its biggest contributors. Thank you all for your hard work, you've made my life a lot easier and taught me a lot in the process.
-
-* [Justin Greenberg](https://github.com/justingreenberg) - For all of your PR's, getting us to Babel 6, and constant work improving our patterns.
-* [Roman Pearah](https://github.com/neverfox) - For your bug reports, help in triaging issues, and PR contributions.
-* [Spencer Dixon](https://github.com/SpencerCDixon) - For your creation of [redux-cli](https://github.com/SpencerCDixon/redux-cli).
-* [Jonas Matser](https://github.com/mtsr) - For your help in triaging issues and unending support in our Gitter channel.
-
-And to everyone else who has contributed, even if you are not listed here your work is appreciated.
+This project is licensed under the MIT license, Copyright (c) 2017 Maximilian
+Stoiber. For more information see `LICENSE.md`.
