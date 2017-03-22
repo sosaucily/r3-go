@@ -19,11 +19,6 @@ import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
 import { ThemeProvider } from 'react-css-themr';
 
-import theme from '../assets/react-toolbox/theme.js';
-import '!!style-loader!css-loader!../assets/react-toolbox/theme.css';
-import '!!style-loader!css-loader!../assets/vendor/fonts/materialIcons-font.css';
-import '!!style-loader!css-loader!../assets/vendor/fonts/Roboto/css/fonts.css';
-
 // Import root app
 import App from 'containers/App';
 
@@ -33,12 +28,20 @@ import { makeSelectLocationState } from 'containers/App/selectors';
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
+// Theme stuff for react-toolbox
+import '!!style-loader!css-loader!../assets/react-toolbox/theme.css';
+import '!!style-loader!css-loader!../assets/vendor/fonts/materialIcons-font.css';
+import '!!style-loader!css-loader!../assets/vendor/fonts/Roboto/css/fonts.css';
+
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-webpack-loader-syntax */
 import '!file-loader?name=[name].[ext]!./favicon.ico';
 import '!file-loader?name=[name].[ext]!./manifest.json';
 import 'file-loader?name=[name].[ext]!./.htaccess'; // eslint-disable-line import/extensions
 /* eslint-enable import/no-webpack-loader-syntax */
+
+// Theme stuff for react-toolbox
+import theme from '../assets/react-toolbox/theme';
 
 import configureStore from './store';
 
