@@ -17,6 +17,12 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import FontFaceObserver from 'fontfaceobserver';
 import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
+import { ThemeProvider } from 'react-css-themr';
+
+import theme from '../assets/react-toolbox/theme.js';
+import '!!style-loader!css-loader!../assets/react-toolbox/theme.css';
+import '!!style-loader!css-loader!../assets/vendor/fonts/materialIcons-font.css';
+import '!!style-loader!css-loader!../assets/vendor/fonts/Roboto/css/fonts.css';
 
 // Import root app
 import App from 'containers/App';
@@ -80,15 +86,17 @@ const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <Router
-          history={history}
-          routes={rootRoute}
-          render={
-            // Scroll to top when going to a new page, imitating default browser
-            // behaviour
-            applyRouterMiddleware(useScroll())
-          }
-        />
+        <ThemeProvider theme={theme}>
+          <Router
+            history={history}
+            routes={rootRoute}
+            render={
+              // Scroll to top when going to a new page, imitating default browser
+              // behaviour
+              applyRouterMiddleware(useScroll())
+            }
+          />
+        </ThemeProvider>
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')
