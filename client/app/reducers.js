@@ -8,6 +8,7 @@ import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import globalReducer from 'containers/App/reducer';
+import sessionReducer from 'containers/Session/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 /*
@@ -45,6 +46,7 @@ export default function createReducer(asyncReducers) {
   return combineReducers({
     route: routeReducer,
     global: globalReducer,
+    session: sessionReducer,
     language: languageProviderReducer,
     ...asyncReducers,
   });

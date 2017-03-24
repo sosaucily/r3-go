@@ -15,7 +15,8 @@
   "reactToolbox": {
     "include": [
       "BUTTON",
-      "DATE_PICKER"
+      "DATE_PICKER",
+      "LIST"
     ],
     "customProperties": {
       "animation-duration": "0.3s",
@@ -248,6 +249,8 @@
     "react-router-redux": "4.0.6",
     "react-router-scroll": "0.4.1",
     "redux": "3.6.0",
+    "redux-form": "^6.5.0",
+    "redux-form-saga": "^0.1.0",
     "redux-immutable": "3.0.8",
     "redux-saga": "0.14.0",
     "reselect": "2.5.4",
@@ -275,6 +278,7 @@
     "cheerio": "0.22.0",
     "circular-dependency-plugin": "2.0.0",
     "coveralls": "2.11.15",
+    "css-loader": "^0.27.3",
     "enzyme": "2.6.0",
     "eslint": "3.11.1",
     "eslint-config-airbnb": "13.0.0",

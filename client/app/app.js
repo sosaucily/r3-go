@@ -89,7 +89,7 @@ const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <ThemeProvider theme={theme}>
+        {/*<ThemeProvider theme={theme}>*/}
           <Router
             history={history}
             routes={rootRoute}
@@ -99,7 +99,7 @@ const render = (messages) => {
               applyRouterMiddleware(useScroll())
             }
           />
-        </ThemeProvider>
+        {/*</ThemeProvider>*/}
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')

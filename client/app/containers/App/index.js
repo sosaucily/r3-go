@@ -10,6 +10,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import Session from 'containers/Session';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
@@ -34,6 +35,7 @@ export function App(props) {
         ]}
       />
       <Header />
+      <Session />
       {React.Children.toArray(props.children)}
       <Footer />
     </AppWrapper>
