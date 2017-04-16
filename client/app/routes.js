@@ -38,22 +38,41 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
-      path: '/features',
-      name: 'features',
-      getComponent(nextState, cb) {
-        import('containers/FeaturePage')
+      // Home route will load as a chunk,
+      // all child routes will come together as a second chunk
+      getChildRoutes(location, cb) {
+        System.import('containers/HomePage/routes')
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
+      }
     }, {
-      path: '/shopping',
-      name: 'shopping',
+      path: '/account',
+      name: 'account',
       getComponent(nextState, cb) {
-        import('containers/ShoppingPage')
+        const importModules = Promise.all([
+          import('containers/Account/reducer'),
+          import('containers/Account/sagas'),
+          import('containers/Account'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('account', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+      // Account route will load as a chunk,
+      // all child routes will come together as a second chunk
+      getChildRoutes(location, cb) {
+        System.import('containers/Account/routes')
           .then(loadModule(cb))
           .catch(errorLoading);
-      },
+      }
     }, {
       path: '*',
       name: 'notfound',
