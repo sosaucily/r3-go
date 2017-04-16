@@ -9,9 +9,10 @@ import { readSessionCookie } from './actions'
 import {
   selectAuthToken,
   selectIsLoggedIn,
+  selectName,
   selectShowSessionDropdown
 } from './selectors'
-// import { selectName } from 'shared/AccountInfo/selectors'
+
 import Dropdown from './Containers/Dropdown'
 import UserCard from './components/UserCard'
 
@@ -56,7 +57,7 @@ const mapDispatchToProps = { toggleSessionDropdown, readSessionCookie }
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
   isLoggedIn: selectIsLoggedIn,
-  // name: selectName,
+  name: selectName,
   showSessionDropdown: selectShowSessionDropdown
 })
 

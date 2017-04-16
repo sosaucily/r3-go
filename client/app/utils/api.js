@@ -29,7 +29,7 @@ function authorize(email, password) {
   return request(endpoint, mergedOptions)
 }
 
-function fetchUserInfo(authToken) {
+function fetchBasicUserInfo(authToken) {
   const endpoint = `${API_URL}/v1/users`
   const mergedOptions = addAuth(authToken, baseOptions)
 
@@ -88,12 +88,12 @@ function request(url, options) {
     .then(checkStatus)
     .then(parseJSON)
     .then(camelizeKeys)
-    
+
 }
 
 export default {
   authorize,
   deauthorize,
-  fetchUserInfo,
+  fetchBasicUserInfo,
   genericRequest
 }

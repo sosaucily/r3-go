@@ -7,6 +7,11 @@ const selectAuthToken = createSelector(
   sessionState => sessionState.authToken
 )
 
+const selectName = createSelector(
+  selectSession,
+  sessionState => sessionState.name
+)
+
 const selectShowSessionDropdown = createSelector(
   selectSession,
   sessionState => sessionState.showSessionDropdown
@@ -20,5 +25,6 @@ const selectIsLoggedIn = createSelector(
 export {
   selectAuthToken,
   selectIsLoggedIn,
+  selectName,
   selectShowSessionDropdown
 }

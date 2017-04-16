@@ -13,6 +13,8 @@ import { fromJS } from 'immutable';
 import { evolve, not } from 'ramda'
 
 import {
+  FETCH_BASIC_USER_INFO_FAILURE,
+  FETCH_BASIC_USER_INFO_SUCCESS,
   LOGIN_SUCCESS,
   TOGGLE_SESSION_FORM,
   LOGOUT_SUCCESS
@@ -21,6 +23,7 @@ import {
 // The initial state of the App
 const initialState = { //fromJS(
   authToken: '',
+  name: '',
   showSessionDropdown: false
 };
 
@@ -40,6 +43,18 @@ const ACTION_HANDLERS = {
       ...state,
       authToken: '',
       showSessionDropdown: false
+    }
+  },
+  [FETCH_BASIC_USER_INFO_SUCCESS]: (state, { payload }) => {
+    return {
+      ...state,
+      name: payload[0].email,
+    }
+  },
+  [FETCH_BASIC_USER_INFO_FAILURE]: (state, payload) => {
+    return {
+      ...state,
+      name: ''
     }
   }
 }

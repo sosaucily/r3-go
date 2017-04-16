@@ -6,12 +6,13 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-import formActionSaga from 'redux-form-saga'
+import formActionSaga from 'redux-form-saga';
 
 import createReducer from './reducers';
-import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling'
+import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling';
+
 import { injectAsyncSagas } from './utils/asyncInjectors';
-import sessionSagas from 'containers/Session/sagas'
+import sessionSagas from 'containers/Session/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -47,6 +48,8 @@ export default function configureStore(initialState = {}, history) {
   // Extensions
   store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
+
+  //injecting global sagas, not async by route
   injectAsyncSagas(store)([formActionSaga])
   injectAsyncSagas(store)(sessionSagas)
 

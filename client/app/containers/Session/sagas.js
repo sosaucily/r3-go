@@ -5,6 +5,9 @@ import Cookies from 'js-cookie'
 
 import { selectAuthToken } from './selectors'
 import {
+  FETCH_BASIC_USER_INFO_REQUEST,
+  FETCH_BASIC_USER_INFO_SUCCESS,
+  FETCH_BASIC_USER_INFO_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
@@ -14,7 +17,24 @@ import {
   TOGGLE_SESSION_FORM,
   TOGGLE_SESSION_FORM_DELAY
 } from './constants'
+
 import Api from 'utils/api'
+
+function* fetchBasicUserInfo() {
+  // while(true) {
+    yield put({type: FETCH_BASIC_USER_INFO_REQUEST})
+    try {
+      const authToken = yield select(selectAuthToken)
+      const payload = yield call(Api.fetchBasicUserInfo, authToken)
+      yield put({type: FETCH_BASIC_USER_INFO_SUCCESS, payload})
+    } catch (error) {
+      console.log(error)
+      yield put({
+        type: FETCH_BASIC_USER_INFO_FAILURE,
+        payload: error})
+    }
+  // }
+}
 
 export function* toggleSessionDropdown() {
   while (true) {
@@ -41,6 +61,7 @@ function* authorize(email, password) {
     const payload = yield call(Api.authorize, email, password)
     yield put({type: LOGIN_SUCCESS, payload})
     yield call(setAuthCookie, payload)
+    yield call(fetchBasicUserInfo)
     return payload.authToken
   } catch(error) {
     const message = error.response ? error.response.statusText
@@ -92,6 +113,7 @@ function* loadCookie() {
   const authToken = yield call(getAuthCookie)
   if (authToken) {
     yield put({type: LOGIN_SUCCESS, payload: { authToken }})
+    yield call(fetchBasicUserInfo)
   }
 }
 

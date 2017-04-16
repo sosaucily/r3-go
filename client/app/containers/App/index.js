@@ -17,11 +17,18 @@ import MessageBar from 'containers/MessageBar'
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
+  @media (min-width: 768px) {
+      width: 750px;
+  }
+  @media (min-width: 992px) {
+      width: 970px;
+  }
+  @media (min-width: 1200px) {
+      width: 1170px;
+  }
   margin: 0 auto;
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
   flex-direction: column;
 `;
 
