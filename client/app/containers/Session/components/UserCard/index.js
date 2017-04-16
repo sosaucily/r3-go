@@ -7,9 +7,12 @@ import UserDataField from './UserDataField'
 
 const Container = styled.div`
     align-items: center;
+    color: #666662
     cursor: pointer;
     display: flex;
+    font-family: Lato Light,sans-serif;
     height: 100%;
+    padding: 0 20px;
 `;
 
 export default function UserCard({ avatar, className, onClick, text }) {

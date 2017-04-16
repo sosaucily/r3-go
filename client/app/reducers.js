@@ -6,9 +6,11 @@
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form/immutable'
 
 import globalReducer from 'containers/App/reducer';
 import sessionReducer from 'containers/Session/reducer';
+import messageBarReducer from 'containers/MessageBar/reducer'
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 /*
@@ -44,9 +46,11 @@ function routeReducer(state = routeInitialState, action) {
  */
 export default function createReducer(asyncReducers) {
   return combineReducers({
+    form: formReducer,
     route: routeReducer,
     global: globalReducer,
     session: sessionReducer,
+    messageBar: messageBarReducer,
     language: languageProviderReducer,
     ...asyncReducers,
   });

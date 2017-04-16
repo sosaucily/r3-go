@@ -1,5 +1,5 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form/immutable'
 import Button from 'react-toolbox/lib/button/Button'
 import { createFormAction } from 'redux-form-saga'
 import styled from 'styled-components'
@@ -10,6 +10,7 @@ import FieldContainer from './FieldContainer'
 import ButtonContainer from './ButtonContainer'
 
 const FormContainer = styled.form`
+    align-items: center;
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;

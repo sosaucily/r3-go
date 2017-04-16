@@ -14,15 +14,15 @@ import withClickAway from 'components/ClickAway'
 import LoginForm from '../components/LoginForm'
 
 const Container = styled.div`
-    background-color: $background-bright;
-    box-shadow: 2px 2px 7px 0 $shadow;
+    background-color: white;
+    box-shadow: 2px 2px 7px 0 rgba(0,0,0,0.13);
     display: flex;
-    font-family: $object-name;
+    font-family: 'Lato Regular', sans-serif;
     justify-content: center;
     min-width: 300px;
     position: absolute;
     right: 0px;
-    top: $header-height + 10;
+    top: 82px;
     z-index: 10;
 `;
 
@@ -39,7 +39,7 @@ function Dropdown({ isLoggedIn, logout, onClickAway }) {
 
   const userDropdown = () => {
     return (
-      <List className={styles.list} selectable ripple>
+      <List selectable ripple>
         <ListItem
             caption='My Account'
             leftIcon='account_circle'

@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import Session from 'containers/Session';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import MessageBar from 'containers/MessageBar'
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`
@@ -37,6 +38,7 @@ export function App(props) {
       <Header />
       <Session />
       {React.Children.toArray(props.children)}
+      <MessageBar />
       <Footer />
     </AppWrapper>
   );

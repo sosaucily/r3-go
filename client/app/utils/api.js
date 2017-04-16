@@ -1,5 +1,4 @@
 import { camelizeKeys } from 'humps'
-import { ApiError } from 'redux-api-middleware'
 import {
   compose,
   ifElse,
@@ -8,7 +7,7 @@ import {
   test
 } from 'ramda'
 
-import { selectAuthToken } from 'shared/Session/selectors'
+import { selectAuthToken } from '../containers/Session/selectors'
 // import 'whatwg-fetch'
 
 const baseOptions =
@@ -64,7 +63,7 @@ function checkStatus(response) {
     return response;
   }
 
-  const error = new ApiError(response.statusText)
+  const error = new Error(response.statusText)
   error.response = response;
   throw error;
 }
@@ -89,6 +88,7 @@ function request(url, options) {
     .then(checkStatus)
     .then(parseJSON)
     .then(camelizeKeys)
+    
 }
 
 export default {

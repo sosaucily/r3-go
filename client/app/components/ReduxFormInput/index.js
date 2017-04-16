@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from 'react-toolbox/lib/input'
+import Input from 'react-toolbox/lib/input/Input'
 import styled from 'styled-components'
 
 const Container = styled.div`

@@ -6,7 +6,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
+import formActionSaga from 'redux-form-saga'
+
 import createReducer from './reducers';
+import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling'
+import { injectAsyncSagas } from './utils/asyncInjectors';
+import sessionSagas from 'containers/Session/sagas'
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +21,7 @@ export default function configureStore(initialState = {}, history) {
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     sagaMiddleware,
+    apiErrorHandlingMidddlware,
     routerMiddleware(history),
   ];
 
@@ -41,6 +47,8 @@ export default function configureStore(initialState = {}, history) {
   // Extensions
   store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
+  injectAsyncSagas(store)([formActionSaga])
+  injectAsyncSagas(store)(sessionSagas)
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */

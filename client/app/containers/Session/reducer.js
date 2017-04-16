@@ -10,6 +10,7 @@
  *   return state.set('yourStateVariable', true);
  */
 import { fromJS } from 'immutable';
+import { evolve, not } from 'ramda'
 
 import {
   LOGIN_SUCCESS,
@@ -40,18 +41,6 @@ const ACTION_HANDLERS = {
       authToken: '',
       showSessionDropdown: false
     }
-  }
-}
-
-function sessionReducer(state = initialState, action) {
-  switch (action.type) {
-    case CHANGE_USERNAME:
-
-      // Delete prefixed '@' from the github username
-      return state
-        .set('username', action.name.replace(/@/gi, ''));
-    default:
-      return state;
   }
 }
 

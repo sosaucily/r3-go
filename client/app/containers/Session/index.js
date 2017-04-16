@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { createStructuredSelector } from 'reselect'
 import { toggleSessionDropdown } from './actions'
+import { readSessionCookie } from './actions'
 
 import {
   selectAuthToken,
@@ -15,37 +16,43 @@ import Dropdown from './Containers/Dropdown'
 import UserCard from './components/UserCard'
 
 const Container = styled.div`
-    background-color: $background-bright;
-    box-shadow: 0 1px 4px 0 $shadow;
+    background-color: white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.13);
     display: flex;
-    height: $header-height;
+    height: 72px;
     overflow: visible;
     right: 0;
     position: absolute;
     top: 0;
 `;
 
-function Session(props) {
-  const {
-    authToken,
-    isLoggedIn,
-    name,
-    showSessionDropdown,
-    toggleSessionDropdown
-  } = props
+class Session extends React.Component {
+  componentDidMount() {
+    this.props.readSessionCookie()
+  }
 
-  const userCardText = isLoggedIn ? `Welcome ${name}` : 'Login'
+  render() {
+    const {
+      authToken,
+      isLoggedIn,
+      name,
+      showSessionDropdown,
+      toggleSessionDropdown
+    } = this.props
 
-  return (
-    <Container>
-      { <UserCard onClick={toggleSessionDropdown} text={userCardText} />}
-      { showSessionDropdown && <Dropdown onClickAway={toggleSessionDropdown} />}
-    </Container>
-  )
+    const userCardText = isLoggedIn ? `Welcome ${name}` : 'Login'
+
+    return (
+      <Container>
+        { <UserCard onClick={toggleSessionDropdown} text={userCardText} />}
+        { showSessionDropdown && <Dropdown onClickAway={toggleSessionDropdown} />}
+      </Container>
+    )
+  }
 }
 
 // Connect
-const mapDispatchToProps = { toggleSessionDropdown }
+const mapDispatchToProps = { toggleSessionDropdown, readSessionCookie }
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
   isLoggedIn: selectIsLoggedIn,

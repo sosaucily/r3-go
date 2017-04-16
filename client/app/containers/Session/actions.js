@@ -1,4 +1,3 @@
-import { SubmissionError } from 'redux-form'
 import Cookies from 'js-cookie'
 import { evolve, not } from 'ramda'
 
