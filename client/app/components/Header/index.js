@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
+import { Link } from 'react-router'
 
 import A from './A';
 import CenteredSection from '../CenteredSection'
@@ -13,7 +14,9 @@ export default class Header extends React.Component {
       <div>
         <CenteredSection>
           <H1>
-            <FormattedMessage {...messages.header} />
+            <Link to='/'>
+              <FormattedMessage {...messages.header} />
+            </Link>
           </H1>
         </CenteredSection>
       </div>
