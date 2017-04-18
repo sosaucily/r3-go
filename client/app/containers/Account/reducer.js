@@ -6,14 +6,12 @@ import {
 const ACTION_HANDLERS = {
   [FETCH_ACCOUNT_SUCCESS]: (state, { payload }) => {
     return {
-      ...state,
-      name: payload[0].email,
+      ...state
     }
   },
   [FETCH_ACCOUNT_FAILURE]: (state, payload) => {
     return {
-      ...state,
-      name: ''
+      ...state
     }
   }
 }

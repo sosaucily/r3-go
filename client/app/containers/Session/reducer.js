@@ -42,6 +42,7 @@ const ACTION_HANDLERS = {
     return {
       ...state,
       authToken: '',
+      name: '',
       showSessionDropdown: false
     }
   },

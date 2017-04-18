@@ -9,12 +9,12 @@ import {
 } from './constants'
 import Api from 'utils/api'
 
-export function* fetchUserInfo() {
+export function* fetchAccountInfo() {
   while(true) {
     yield take(FETCH_ACCOUNT_REQUEST)
     try {
       const authToken = yield select(selectAuthToken)
-      const payload = yield call(Api.fetchUserInfo, authToken)
+      const payload = yield call(Api.fetchAccountInfo, authToken)
       yield put({type: FETCH_ACCOUNT_SUCCESS, payload})
     } catch (error) {
       console.log(error)
@@ -27,5 +27,5 @@ export function* fetchUserInfo() {
 
 // Bootstrap sagas
 export default [
-  fetchUserInfo,
+  fetchAccountInfo,
 ];

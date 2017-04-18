@@ -36,6 +36,13 @@ function fetchBasicUserInfo(authToken) {
   return request(endpoint, mergedOptions)
 }
 
+function fetchAccountInfo(authToken) {
+  //this should look like the fetchBasicUserInfo request
+  //but is used to fetch complete account info
+
+  console.log('called fetchAccountInfo (placeholder)')
+}
+
 function genericRequest(url) {
   return request(url)
 }
@@ -95,5 +102,6 @@ export default {
   authorize,
   deauthorize,
   fetchBasicUserInfo,
+  fetchAccountInfo,
   genericRequest
 }

@@ -7,4 +7,4 @@ import { FETCH_ACCOUNT_REQUEST } from './constants'
 // Actions
 // ------------------------------------
 
-export const fetchUserInfo = () => action(FETCH_ACCOUNT_REQUEST)
+export const fetchAccountInfo = () => action(FETCH_ACCOUNT_REQUEST)
