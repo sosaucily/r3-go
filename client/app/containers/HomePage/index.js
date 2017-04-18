@@ -4,6 +4,7 @@ import { browserHistory, IndexLink, Link } from 'react-router'
 import { addIndex, findIndex, equals, last, times } from 'ramda'
 import Tab from 'react-toolbox/lib/tabs/Tab'
 import Tabs from 'react-toolbox/lib/tabs/Tabs'
+import Helmet from 'react-helmet';
 
 import ContentBody from './ContentBody'
 import ProductCard from './ProductCard'
@@ -40,6 +41,12 @@ export default class HomeLayout extends React.Component { // eslint-disable-line
     const timesWithIndex = addIndex(times)
     return (
       <div>
+        <Helmet
+          title="Home Page"
+          meta={[
+            { name: 'description', content: 'A React/Redux/Rails Boilerplate application homepage' },
+          ]}
+        />
         <Tabs
             index={this.state.tabIndex}
             onChange={this.handleTabChange}>
