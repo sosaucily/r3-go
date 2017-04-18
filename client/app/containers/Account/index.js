@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createStructuredSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect';
+import { FormattedMessage } from 'react-intl';
 
+import messages from './messages';
 import { fetchAccountInfo } from './actions'
 import { selectIsLoggedIn, selectName } from '../Session/selectors'
 
@@ -24,9 +26,11 @@ class AccountInfo extends Component {
   render() {
     const { name } = this.props
     const message = name
-      ? `welcome ${name}, you are authenticated and have a valid token`
-      : 'No session, no valid token, please log in'
-    return <div>{message}</div>
+      ? <FormattedMessage
+            {...messages.loggedIn}
+            values={{ name }} />
+      : <FormattedMessage {...messages.loggedOut} />
+    return message
   }
 }
 
