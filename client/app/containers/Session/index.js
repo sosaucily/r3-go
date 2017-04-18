@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components';
-
 import { createStructuredSelector } from 'reselect'
-import { toggleSessionDropdown } from './actions'
-import { readSessionCookie } from './actions'
+
+import { readSessionCookie, toggleSessionDropdown } from './actions'
 
 import {
   selectAuthToken,
