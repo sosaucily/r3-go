@@ -6,8 +6,9 @@
 import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { reducer as formReducer } from 'redux-form/immutable'
+import { reducer as formReducer } from 'redux-form/immutable';
 
+import footerReducer from 'containers/Footer/reducer';
 import globalReducer from 'containers/App/reducer';
 import sessionReducer from 'containers/Session/reducer';
 import messageBarReducer from 'containers/MessageBar/reducer'
@@ -46,6 +47,7 @@ function routeReducer(state = routeInitialState, action) {
  */
 export default function createReducer(asyncReducers) {
   return combineReducers({
+    footer: footerReducer,
     form: formReducer,
     route: routeReducer,
     global: globalReducer,

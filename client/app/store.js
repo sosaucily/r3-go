@@ -12,6 +12,7 @@ import createReducer from './reducers';
 import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling';
 
 import { injectAsyncSagas } from './utils/asyncInjectors';
+import footerSagas from 'containers/Footer/sagas';
 import sessionSagas from 'containers/Session/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -52,6 +53,7 @@ export default function configureStore(initialState = {}, history) {
   //injecting global sagas, not async by route
   injectAsyncSagas(store)([formActionSaga])
   injectAsyncSagas(store)(sessionSagas)
+  injectAsyncSagas(store)(footerSagas)
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
