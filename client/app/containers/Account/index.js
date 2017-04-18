@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
+import InfoCard from './InfoCard'
 import messages from './messages';
 import { fetchAccountInfo } from './actions'
 import { selectIsLoggedIn, selectName } from '../Session/selectors'
@@ -23,14 +24,24 @@ class AccountInfo extends Component {
   //   }
   // }
 
-  render() {
+  getMessage() {
     const { name } = this.props
+    const {formatMessage} = this.props.intl;
+
     const message = name
-      ? <FormattedMessage
-            {...messages.loggedIn}
-            values={{ name }} />
-      : <FormattedMessage {...messages.loggedOut} />
+      ? formatMessage(messages.loggedIn, { name })
+      : formatMessage(messages.loggedOut)
     return message
+  }
+
+  render() {
+    const {formatMessage} = this.props.intl;
+
+    return (
+      <div>
+        <InfoCard subtitle={this.getMessage()} />
+      </div>
+    )
   }
 }
 
@@ -43,4 +54,4 @@ const mapStateToProps = createStructuredSelector({
     isLoggedIn: selectIsLoggedIn
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AccountInfo))
