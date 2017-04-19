@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components'
 import { browserHistory, IndexLink, Link } from 'react-router'
 import { addIndex, findIndex, equals, last, times } from 'ramda'
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Tab from 'react-toolbox/lib/tabs/Tab'
 import Tabs from 'react-toolbox/lib/tabs/Tabs'
 import Helmet from 'react-helmet';
 
 import ContentBody from './ContentBody'
 import ProductCard from './ProductCard'
-
-// import styles from './HomeView.scss'
+import messages from './messages'
 
 const navs = ['women', 'men', 'influencer', 'about']
 
-export default class HomeLayout extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class HomeLayout extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props)
     const index = this.getIndexFromProps(props)
@@ -38,6 +38,8 @@ export default class HomeLayout extends React.Component { // eslint-disable-line
   }
 
   render() {
+    const {formatMessage} = this.props.intl;
+
     const timesWithIndex = addIndex(times)
     return (
       <div>
@@ -50,20 +52,20 @@ export default class HomeLayout extends React.Component { // eslint-disable-line
         <Tabs
             index={this.state.tabIndex}
             onChange={this.handleTabChange}>
-          <Tab label='Shop Women'>
+          <Tab label={formatMessage(messages.tabs.shopWomen)}>
             <ContentBody>
               {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 9)}
             </ContentBody>
           </Tab>
-          <Tab label='Shop Men'>
+          <Tab label={formatMessage(messages.tabs.shopMen)}>
             <ContentBody>
               {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 9)}
             </ContentBody>
           </Tab>
-          <Tab label='Become an influencer'>
+          <Tab label={formatMessage(messages.tabs.influencer)}>
             Some stuff about how to sign up.
           </Tab>
-          <Tab label='About us'>
+          <Tab label={formatMessage(messages.tabs.about)}>
             More about our company
           </Tab>
         </Tabs>
@@ -71,3 +73,5 @@ export default class HomeLayout extends React.Component { // eslint-disable-line
     )
   }
 }
+
+export default injectIntl(HomeLayout)

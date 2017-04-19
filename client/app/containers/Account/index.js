@@ -35,13 +35,7 @@ class AccountInfo extends Component {
   }
 
   render() {
-    const {formatMessage} = this.props.intl;
-
-    return (
-      <div>
-        <InfoCard subtitle={this.getMessage()} />
-      </div>
-    )
+    return <InfoCard subtitle={this.getMessage()} />
   }
 }
 
