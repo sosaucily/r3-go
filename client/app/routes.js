@@ -21,23 +21,11 @@ export default function createRoutes(store) {
       path: '/',
       name: 'home',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          import('containers/HomePage/reducer'),
-          import('containers/HomePage/sagas'),
-          import('containers/HomePage'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('home', reducer.default);
-          injectSagas(sagas.default);
-
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
+        import('containers/HomePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
+      
       // Home route will load as a chunk,
       // all child routes will come together as a second chunk
       getChildRoutes(location, cb) {

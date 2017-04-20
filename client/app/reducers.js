@@ -9,7 +9,6 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form/immutable';
 
 import footerReducer from 'containers/Footer/reducer';
-import globalReducer from 'containers/App/reducer';
 import sessionReducer from 'containers/Session/reducer';
 import messageBarReducer from 'containers/MessageBar/reducer'
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
@@ -50,7 +49,6 @@ export default function createReducer(asyncReducers) {
     footer: footerReducer,
     form: formReducer,
     route: routeReducer,
-    global: globalReducer,
     session: sessionReducer,
     messageBar: messageBarReducer,
     language: languageProviderReducer,
