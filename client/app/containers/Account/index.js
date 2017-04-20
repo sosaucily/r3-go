@@ -9,20 +9,9 @@ import { fetchAccountInfo } from './actions'
 import { selectIsLoggedIn, selectName } from '../Session/selectors'
 
 class AccountInfo extends Component {
-  constructor(props) {
-    super(props)
-    this.fetchAccountInfo = this.props.fetchAccountInfo
-  }
-
   componentDidMount() {
-    this.fetchAccountInfo()
+    this.props.fetchAccountInfo()
   }
-
-  // componentWillReceiveProps(nextProps) {
-  //   if(!nextProps.isLoggedIn === this.props.isLoggedIn) {
-  //     this.fetchAccountInfo()
-  //   }
-  // }
 
   getMessage() {
     const { name } = this.props
