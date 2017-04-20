@@ -4,7 +4,7 @@ const selectFooter = state => state.get('footer')
 
 const selectSha = createSelector(
   selectFooter,
-  footerState => footerState.sha
+  footerState => footerState.get('sha')
 )
 
 export {

@@ -1,26 +1,21 @@
+import { fromJS } from 'immutable';
+
 import {
   FETCH_ACCOUNT_SUCCESS,
   FETCH_ACCOUNT_FAILURE
 } from './constants'
 
+const initialState = fromJS({
+  name: ''
+})
+
 const ACTION_HANDLERS = {
   [FETCH_ACCOUNT_SUCCESS]: (state, { payload }) => {
-    return {
-      ...state
-    }
+    return state
   },
   [FETCH_ACCOUNT_FAILURE]: (state, payload) => {
-    return {
-      ...state
-    }
+    return state
   }
-}
-
-// ------------------------------------
-// Reducer
-// ------------------------------------
-const initialState = {
-  name: ''
 }
 
 export default function accountReducer (state = initialState, action) {

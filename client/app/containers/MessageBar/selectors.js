@@ -4,12 +4,12 @@ const selectMessageBar = state => state.get('messageBar')
 
 const selectActive = createSelector(
   selectMessageBar,
-  messageBarState => messageBarState.active
+  messageBarState => messageBarState.get('active')
 )
 
 const selectMessage = createSelector(
   selectMessageBar,
-  messageBarState => messageBarState.message
+  messageBarState => messageBarState.get('message')
 )
 
 export {

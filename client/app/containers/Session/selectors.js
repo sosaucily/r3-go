@@ -4,17 +4,17 @@ const selectSession = state => state.get('session')
 
 const selectAuthToken = createSelector(
   selectSession,
-  sessionState => sessionState.authToken
+  sessionState => sessionState.get('authToken')
 )
 
 const selectName = createSelector(
   selectSession,
-  sessionState => sessionState.name
+  sessionState => sessionState.get('name')
 )
 
 const selectShowSessionDropdown = createSelector(
   selectSession,
-  sessionState => sessionState.showSessionDropdown
+  sessionState => sessionState.get('showSessionDropdown')
 )
 
 const selectIsLoggedIn = createSelector(

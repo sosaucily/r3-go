@@ -1,27 +1,26 @@
+import { fromJS } from 'immutable';
+
 import {
   API_ERROR,
   CLEAR_MESSAGE
 } from './constants'
 
-const ACTION_HANDLERS = {
-  [API_ERROR]: (state, { message }) => {
-    return {
-      ...state,
-      active: true,
-      message
-    }
-  },
-  [CLEAR_MESSAGE]: (state) => {
-    return { ...state, active: false, message: '' }
-  }
-}
-
-// ------------------------------------
-// Reducer
-// ------------------------------------
-const initialState = {
+const initialState = fromJS({
   active: false,
   message: ''
+})
+
+const ACTION_HANDLERS = {
+  [API_ERROR]: (state, { message }) => {
+    return state
+      .set('active', true)
+      .set('message', message)
+  },
+  [CLEAR_MESSAGE]: (state) => {
+    return state
+      .set('active', false)
+      .set('message', '')
+  }
 }
 
 export default function messageBarReducer (state = initialState, action) {
