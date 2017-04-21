@@ -1,5 +1,5 @@
-import { action } from 'utils/helpers/actions'
+import { action } from 'utils/helpers/actions';
 
-import { GET_SHA_REQUEST } from './constants'
+import { GET_SHA_REQUEST } from './constants';
 
-export const getSha = () => action(GET_SHA_REQUEST)
+export const getSha = () => action(GET_SHA_REQUEST);

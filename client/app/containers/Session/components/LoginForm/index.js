@@ -1,13 +1,13 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form/immutable'
-import Button from 'react-toolbox/lib/button/Button'
-import { createFormAction } from 'redux-form-saga'
-import styled from 'styled-components'
+import React from 'react';
+import { Field, reduxForm } from 'redux-form/immutable';
+import Button from 'react-toolbox/lib/button/Button';
+import { createFormAction } from 'redux-form-saga';
+import styled from 'styled-components';
 
-import ReduxFormInput from 'components/ReduxFormInput'
-import ErrorField from './ErrorField'
-import FieldContainer from './FieldContainer'
-import ButtonContainer from './ButtonContainer'
+import ReduxFormInput from 'components/ReduxFormInput';
+import ErrorField from './ErrorField';
+import FieldContainer from './FieldContainer';
+import ButtonContainer from './ButtonContainer';
 
 const FormContainer = styled.form`
     align-items: center;
@@ -17,8 +17,8 @@ const FormContainer = styled.form`
 `;
 
 function LoginForm(props) {
-  const { error, handleSubmit, submitActionPrefix, pristine, reset, submitting } = props
-  const formAction = createFormAction(submitActionPrefix)
+  const { error, handleSubmit, submitActionPrefix, pristine, reset, submitting } = props;
+  const formAction = createFormAction(submitActionPrefix);
 
   return (
     <FormContainer onSubmit={handleSubmit(formAction)}>
@@ -27,21 +27,23 @@ function LoginForm(props) {
           name="email"
           type="text"
           hint="email"
-          component={ReduxFormInput} />
+          component={ReduxFormInput}
+        />
         <Field
           name="password"
           type="text"
           hint="password"
-          component={ReduxFormInput} />
+          component={ReduxFormInput}
+        />
       </FieldContainer>
       {error && !submitting && <ErrorField>{error}</ErrorField>}
       <ButtonContainer>
-        <Button label='Login' disabled={submitting} accent type="submit" />
+        <Button label="Login" disabled={submitting} accent type="submit" />
       </ButtonContainer>
     </FormContainer>
-  )
+  );
 }
 
 export default reduxForm({
-  form: 'login'
-})(LoginForm)
+  form: 'login',
+})(LoginForm);

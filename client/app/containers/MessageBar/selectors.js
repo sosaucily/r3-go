@@ -1,18 +1,18 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
-const selectMessageBar = state => state.get('messageBar')
+const selectMessageBar = (state) => state.get('messageBar');
 
 const selectActive = createSelector(
   selectMessageBar,
-  messageBarState => messageBarState.get('active')
-)
+  (messageBarState) => messageBarState.get('active')
+);
 
 const selectMessage = createSelector(
   selectMessageBar,
-  messageBarState => messageBarState.get('message')
-)
+  (messageBarState) => messageBarState.get('message')
+);
 
 export {
   selectActive,
-  selectMessage
-}
+  selectMessage,
+};

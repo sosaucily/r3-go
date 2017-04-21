@@ -18,5 +18,5 @@ export default defineMessages({
       id: 'boilerplate.containers.HomePage.tabs.about',
       defaultMessage: 'About Us',
     },
-  }
+  },
 });

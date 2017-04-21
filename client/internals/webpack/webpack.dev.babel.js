@@ -24,7 +24,7 @@ const plugins = [
     failOnError: false, // show a warning when there is a circular dependency
   }),
   new webpack.DefinePlugin({
-    API_URL: JSON.stringify("http://localhost:3001")
+    API_URL: JSON.stringify('http://localhost:3001'),
   }),
 ];
 

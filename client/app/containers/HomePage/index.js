@@ -1,46 +1,46 @@
 import React from 'react';
-import styled from 'styled-components'
-import { browserHistory, IndexLink, Link } from 'react-router'
-import { addIndex, findIndex, equals, last, times } from 'ramda'
+import styled from 'styled-components';
+import { browserHistory, IndexLink, Link } from 'react-router';
+import { addIndex, findIndex, equals, last, times } from 'ramda';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import Tab from 'react-toolbox/lib/tabs/Tab'
-import Tabs from 'react-toolbox/lib/tabs/Tabs'
+import Tab from 'react-toolbox/lib/tabs/Tab';
+import Tabs from 'react-toolbox/lib/tabs/Tabs';
 import Helmet from 'react-helmet';
 
-import ContentBody from './ContentBody'
-import ProductCard from './ProductCard'
-import messages from './messages'
+import ContentBody from './ContentBody';
+import ProductCard from './ProductCard';
+import messages from './messages';
 
-const navs = ['women', 'men', 'influencer', 'about']
+const navs = ['women', 'men', 'influencer', 'about'];
 
 class HomeLayout extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
-    super(props)
-    const index = this.getIndexFromProps(props)
-    this.state = { tabIndex: index }
+    super(props);
+    const index = this.getIndexFromProps(props);
+    this.state = { tabIndex: index };
   }
 
   // Turn this into a higher order component for route-tab stuff
   componentWillReceiveProps(nextProps) {
-    const index = this.getIndexFromProps(nextProps)
-    this.setState({ tabIndex: index })
+    const index = this.getIndexFromProps(nextProps);
+    this.setState({ tabIndex: index });
   }
 
   getIndexFromProps({ routes }) {
-    const path = last(routes).path
-    const index = findIndex(equals(path))(navs)
-    return (index === -1) ? 0 : index
+    const path = last(routes).path;
+    const index = findIndex(equals(path))(navs);
+    return (index === -1) ? 0 : index;
   }
 
   handleTabChange = (index) => {
-    this.setState({tabIndex: index})
-    browserHistory.push(`/${navs[index]}`)
+    this.setState({ tabIndex: index });
+    browserHistory.push(`/${navs[index]}`);
   }
 
   render() {
-    const {formatMessage} = this.props.intl;
+    const { formatMessage } = this.props.intl;
 
-    const timesWithIndex = addIndex(times)
+    const timesWithIndex = addIndex(times);
     return (
       <div>
         <Helmet
@@ -50,16 +50,17 @@ class HomeLayout extends React.Component { // eslint-disable-line react/prefer-s
           ]}
         />
         <Tabs
-            index={this.state.tabIndex}
-            onChange={this.handleTabChange}>
+          index={this.state.tabIndex}
+          onChange={this.handleTabChange}
+        >
           <Tab label={formatMessage(messages.tabs.shopWomen)}>
             <ContentBody>
-              {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 9)}
+              {timesWithIndex((iter) => (<ProductCard key={iter} />), 9)}
             </ContentBody>
           </Tab>
           <Tab label={formatMessage(messages.tabs.shopMen)}>
             <ContentBody>
-              {timesWithIndex(iter => { return (<ProductCard key={iter} />) }, 9)}
+              {timesWithIndex((iter) => (<ProductCard key={iter} />), 9)}
             </ContentBody>
           </Tab>
           <Tab label={formatMessage(messages.tabs.influencer)}>
@@ -70,8 +71,8 @@ class HomeLayout extends React.Component { // eslint-disable-line react/prefer-s
           </Tab>
         </Tabs>
       </div>
-    )
+    );
   }
 }
 
-export default injectIntl(HomeLayout)
+export default injectIntl(HomeLayout);

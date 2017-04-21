@@ -1,12 +1,12 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
-const selectFooter = state => state.get('footer')
+const selectFooter = (state) => state.get('footer');
 
 const selectSha = createSelector(
   selectFooter,
-  footerState => footerState.get('sha')
-)
+  (footerState) => footerState.get('sha')
+);
 
 export {
-  selectSha
-}
+  selectSha,
+};

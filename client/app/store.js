@@ -50,10 +50,10 @@ export default function configureStore(initialState = {}, history) {
   store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
 
-  //injecting global sagas, not async by route
-  injectAsyncSagas(store)([formActionSaga])
-  injectAsyncSagas(store)(sessionSagas)
-  injectAsyncSagas(store)(footerSagas)
+  // injecting global sagas, not async by route
+  injectAsyncSagas(store)([formActionSaga]);
+  injectAsyncSagas(store)(sessionSagas);
+  injectAsyncSagas(store)(footerSagas);
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */

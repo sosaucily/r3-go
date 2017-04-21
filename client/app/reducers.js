@@ -10,7 +10,7 @@ import { reducer as formReducer } from 'redux-form/immutable';
 
 import footerReducer from 'containers/Footer/reducer';
 import sessionReducer from 'containers/Session/reducer';
-import messageBarReducer from 'containers/MessageBar/reducer'
+import messageBarReducer from 'containers/MessageBar/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 /*

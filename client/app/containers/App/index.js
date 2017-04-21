@@ -13,7 +13,7 @@ import styled from 'styled-components';
 import Session from 'containers/Session';
 import Header from 'components/Header';
 import Footer from 'containers/Footer';
-import MessageBar from 'containers/MessageBar'
+import MessageBar from 'containers/MessageBar';
 import withProgressBar from 'components/ProgressBar';
 
 const AppWrapper = styled.div`

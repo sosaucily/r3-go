@@ -25,14 +25,14 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-      
+
       // Home route will load as a chunk,
       // all child routes will come together as a second chunk
       getChildRoutes(location, cb) {
         System.import('containers/HomePage/routes')
           .then(loadModule(cb))
           .catch(errorLoading);
-      }
+      },
     }, {
       path: '/account',
       name: 'account',
@@ -60,7 +60,7 @@ export default function createRoutes(store) {
         System.import('containers/Account/routes')
           .then(loadModule(cb))
           .catch(errorLoading);
-      }
+      },
     }, {
       path: '*',
       name: 'notfound',
