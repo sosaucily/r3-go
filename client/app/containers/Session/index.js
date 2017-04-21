@@ -1,19 +1,17 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { createStructuredSelector } from 'reselect'
+import { createStructuredSelector } from 'reselect';
 
-import { readSessionCookie, toggleSessionDropdown } from './actions'
-
+import { readSessionCookie, toggleSessionDropdown } from './actions';
 import {
   selectAuthToken,
   selectIsLoggedIn,
   selectName,
-  selectShowSessionDropdown
-} from './selectors'
-
-import Dropdown from './Containers/Dropdown'
-import UserCard from './components/UserCard'
+  selectShowSessionDropdown,
+} from './selectors';
+import Dropdown from './containers/Dropdown';
+import UserCard from './components/UserCard';
 
 const Container = styled.div`
     background-color: white;
@@ -28,36 +26,34 @@ const Container = styled.div`
 
 class Session extends React.Component {
   componentDidMount() {
-    this.props.readSessionCookie()
+    this.props.readSessionCookie();
   }
 
   render() {
     const {
-      authToken,
       isLoggedIn,
       name,
       showSessionDropdown,
-      toggleSessionDropdown
-    } = this.props
+    } = this.props;
 
-    const userCardText = isLoggedIn ? `Welcome ${name}` : 'Login'
+    const userCardText = isLoggedIn ? `Welcome ${name}` : 'Login';
 
     return (
       <Container>
         { <UserCard onClick={toggleSessionDropdown} text={userCardText} />}
         { showSessionDropdown && <Dropdown onClickAway={toggleSessionDropdown} />}
       </Container>
-    )
+    );
   }
 }
 
 // Connect
-const mapDispatchToProps = { toggleSessionDropdown, readSessionCookie }
+const mapDispatchToProps = { toggleSessionDropdown, readSessionCookie };
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
   isLoggedIn: selectIsLoggedIn,
   name: selectName,
-  showSessionDropdown: selectShowSessionDropdown
-})
+  showSessionDropdown: selectShowSessionDropdown,
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Session)
+export default connect(mapStateToProps, mapDispatchToProps)(Session);

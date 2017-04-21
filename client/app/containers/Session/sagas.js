@@ -1,9 +1,10 @@
-import { take, takeEvery, call, put, cancelled, cancel, fork, select } from 'redux-saga/effects'
-import { delay } from 'redux-saga'
-import { SubmissionError } from 'redux-form/immutable'
-import Cookies from 'js-cookie'
+import { take, takeEvery, call, put, cancelled, fork, select } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { SubmissionError } from 'redux-form/immutable';
+import Cookies from 'js-cookie';
 
-import { selectAuthToken } from './selectors'
+import Api from 'utils/api';
+import { selectAuthToken } from './selectors';
 import {
   FETCH_BASIC_USER_INFO_REQUEST,
   FETCH_BASIC_USER_INFO_SUCCESS,
@@ -15,79 +16,77 @@ import {
   LOGOUT_SUCCESS,
   READ_SESSION_COOKIE,
   TOGGLE_SESSION_FORM,
-  TOGGLE_SESSION_FORM_DELAY
-} from './constants'
-
-import Api from 'utils/api'
+  TOGGLE_SESSION_FORM_DELAY,
+} from './constants';
 
 function* fetchBasicUserInfo() {
-  // while(true) {
-    yield put({type: FETCH_BASIC_USER_INFO_REQUEST})
-    try {
-      const authToken = yield select(selectAuthToken)
-      const payload = yield call(Api.fetchBasicUserInfo, authToken)
-      yield put({type: FETCH_BASIC_USER_INFO_SUCCESS, payload})
-    } catch (error) {
-      console.log(error)
-      yield put({
-        type: FETCH_BASIC_USER_INFO_FAILURE,
-        payload: error})
-    }
-  // }
+  yield put({ type: FETCH_BASIC_USER_INFO_REQUEST });
+  try {
+    const authToken = yield select(selectAuthToken);
+    const payload = yield call(Api.fetchBasicUserInfo, authToken);
+    yield put({ type: FETCH_BASIC_USER_INFO_SUCCESS, payload });
+  } catch (error) {
+    console.log(error);
+    yield put({
+      type: FETCH_BASIC_USER_INFO_FAILURE,
+      payload: error });
+  }
 }
 
 export function* toggleSessionDropdown() {
-  while (true) {
-    yield take(TOGGLE_SESSION_FORM_DELAY)
-    yield put({type: TOGGLE_SESSION_FORM})
-    yield call(delay, 300)
+  while (true) { // eslint-disable-line no-constant-condition
+    yield take(TOGGLE_SESSION_FORM_DELAY);
+    yield put({ type: TOGGLE_SESSION_FORM });
+    yield call(delay, 300);
   }
 }
 
 function* setAuthCookie({ authToken }) {
-  Cookies.set('authToken', authToken)
+  Cookies.set('authToken', authToken);
 }
 
 function* clearAuthCookie() {
-  Cookies.remove('authToken')
+  Cookies.remove('authToken');
 }
 
 function* getAuthCookie() {
-  return Cookies.get('authToken')
+  return Cookies.get('authToken');
 }
 
 function* authorize(email, password) {
   try {
-    const payload = yield call(Api.authorize, email, password)
-    yield put({type: LOGIN_SUCCESS, payload})
-    yield call(setAuthCookie, payload)
-    yield call(fetchBasicUserInfo)
-    return payload.authToken
-  } catch(error) {
+    const payload = yield call(Api.authorize, email, password);
+    yield put({ type: LOGIN_SUCCESS, payload });
+    yield call(setAuthCookie, payload);
+    yield call(fetchBasicUserInfo);
+    return payload.authToken;
+  } catch (error) {
     const message = error.response ? error.response.statusText
-                                   : 'Server Unavailable'
-    const status = error.response ? error.response.status : 404
+                                   : 'Server Unavailable';
+    const status = error.response ? error.response.status : 404;
     yield put({
       type: LOGIN_FAILURE,
       payload: new SubmissionError(
-        { status: status,
-          message: message,
+        { status,
+          message,
           _error: message }
-      )
-    })
+      ),
+    });
   } finally {
     if (yield cancelled()) {
       // ... put special cancellation handling code here
     }
   }
+
+  return false;
 }
 
 export function* login() {
-  while (true) {
-    const { payload } = yield take(LOGIN_REQUEST)
-    const password = payload.get('password')
-    const email = payload.get('email')
-    const loginTask = yield fork(authorize, email, password)
+  while (true) { // eslint-disable-line no-constant-condition
+    const { payload } = yield take(LOGIN_REQUEST);
+    const password = payload.get('password');
+    const email = payload.get('email');
+    yield fork(authorize, email, password);
     // const action = yield take([LOGOUT_REQUEST, LOGIN_FAILURE])
     // if (action.type === LOGIN_FAILURE) {
     //
@@ -96,24 +95,24 @@ export function* login() {
 }
 
 export function* logout() {
-  while (true) {
-    yield take(LOGOUT_REQUEST)
-    const authToken = yield select(selectAuthToken)
-    const resp = yield fork(Api.deauthorize, authToken)
-    yield call(clearAuthCookie)
-    yield put({type: LOGOUT_SUCCESS})
+  while (true) { // eslint-disable-line no-constant-condition
+    yield take(LOGOUT_REQUEST);
+    const authToken = yield select(selectAuthToken);
+    yield fork(Api.deauthorize, authToken);
+    yield call(clearAuthCookie);
+    yield put({ type: LOGOUT_SUCCESS });
   }
 }
 
 export function* readSessionCookie() {
-  yield takeEvery(READ_SESSION_COOKIE, loadCookie)
+  yield takeEvery(READ_SESSION_COOKIE, loadCookie);
 }
 
 function* loadCookie() {
-  const authToken = yield call(getAuthCookie)
+  const authToken = yield call(getAuthCookie);
   if (authToken) {
-    yield put({type: LOGIN_SUCCESS, payload: { authToken }})
-    yield call(fetchBasicUserInfo)
+    yield put({ type: LOGIN_SUCCESS, payload: { authToken } });
+    yield call(fetchBasicUserInfo);
   }
 }
 
@@ -122,5 +121,5 @@ export default [
   login,
   logout,
   readSessionCookie,
-  toggleSessionDropdown
-]
+  toggleSessionDropdown,
+];

@@ -54,7 +54,7 @@
     "clean:all": "npm run analyze:clean && npm run test:clean && npm run build:clean",
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "npm run lint:js",
-    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:eslint": "eslint --ignore-pattern internals/scripts assets",
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
     "pretest": "npm run test:clean && npm run lint",
@@ -162,7 +162,8 @@
       "no-use-before-define": 0,
       "prefer-template": 2,
       "class-methods-use-this": 0,
-      "react/forbid-prop-types": 0,
+      "react/prop-types": 0,
+      "react/forbid-prop-types": 1,
       "react/jsx-first-prop-new-line": [
         2,
         "multiline"

@@ -1,50 +1,41 @@
-import { camelizeKeys } from 'humps'
-import {
-  compose,
-  ifElse,
-  merge,
-  mergeWith,
-  test
-} from 'ramda'
-
-import { selectAuthToken } from '../containers/Session/selectors'
-// import 'whatwg-fetch'
+import { camelizeKeys } from 'humps';
+import { merge, mergeWith } from 'ramda';
 
 const baseOptions =
   { method: 'GET',
-    headers: {'Content-Type': 'application/json' }}
+    headers: { 'Content-Type': 'application/json' } };
 
 function deauthorize(authToken) {
-  const endpoint = `${API_URL}/v1/logout`
-  const mergedOptions = addAuth(authToken, merge(baseOptions, { method: 'DELETE' }))
+  const endpoint = `${API_URL}/v1/logout`; /* global API_URL */
+  const mergedOptions = addAuth(authToken, merge(baseOptions, { method: 'DELETE' }));
 
-  return fetch(endpoint, mergedOptions, authToken).then(checkStatus)
+  return fetch(endpoint, mergedOptions, authToken).then(checkStatus);
 }
 
 function authorize(email, password) {
-  const endpoint = `${API_URL}/v1/login`
-  const body = JSON.stringify({ email: email, password: password, grantType: 'password' })
-  const mergedOptions = merge(baseOptions, { method: 'POST', body })
+  const endpoint = `${API_URL}/v1/login`; /* global API_URL */
+  const body = JSON.stringify({ email, password, grantType: 'password' });
+  const mergedOptions = merge(baseOptions, { method: 'POST', body });
 
-  return request(endpoint, mergedOptions)
+  return request(endpoint, mergedOptions);
 }
 
 function fetchBasicUserInfo(authToken) {
-  const endpoint = `${API_URL}/v1/users`
-  const mergedOptions = addAuth(authToken, baseOptions)
+  const endpoint = `${API_URL}/v1/users`; /* global API_URL */
+  const mergedOptions = addAuth(authToken, baseOptions);
 
-  return request(endpoint, mergedOptions)
+  return request(endpoint, mergedOptions);
 }
 
-function fetchAccountInfo(authToken) {
-  //this should look like the fetchBasicUserInfo request
-  //but is used to fetch complete account info
+function fetchAccountInfo() { // authToken) {
+  // this should look like the fetchBasicUserInfo request
+  // but is used to fetch complete account info
 
-  console.log('called fetchAccountInfo (placeholder)')
+  console.log('called fetchAccountInfo (placeholder)');
 }
 
 function genericRequest(url) {
-  return request(url)
+  return request(url);
 }
 
 /**
@@ -70,16 +61,16 @@ function checkStatus(response) {
     return response;
   }
 
-  const error = new Error(response.statusText)
+  const error = new Error(response.statusText);
   error.response = response;
   throw error;
 }
 
 function addAuth(authToken, options) {
   const newOptions = mergeWith(merge, { headers: {
-    Authorization: `Bearer ${authToken}`
-  }}, options)
-  return newOptions
+    Authorization: `Bearer ${authToken}`,
+  } }, options);
+  return newOptions;
 }
 
 /**
@@ -94,8 +85,7 @@ function request(url, options) {
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
-    .then(camelizeKeys)
-
+    .then(camelizeKeys);
 }
 
 export default {
@@ -103,5 +93,5 @@ export default {
   deauthorize,
   fetchBasicUserInfo,
   fetchAccountInfo,
-  genericRequest
-}
+  genericRequest,
+};
