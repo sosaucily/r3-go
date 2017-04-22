@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { createStructuredSelector } from 'reselect';
 
-import { readSessionCookie, toggleSessionDropdown } from './actions';
+import {
+  readSessionCookie,
+  toggleSessionDropdown as toggleSessionDropdownAction } from './actions';
 import {
   selectAuthToken,
   selectIsLoggedIn,
@@ -34,6 +36,7 @@ class Session extends React.Component {
       isLoggedIn,
       name,
       showSessionDropdown,
+      toggleSessionDropdown,
     } = this.props;
 
     const userCardText = isLoggedIn ? `Welcome ${name}` : 'Login';
@@ -48,7 +51,7 @@ class Session extends React.Component {
 }
 
 // Connect
-const mapDispatchToProps = { toggleSessionDropdown, readSessionCookie };
+const mapDispatchToProps = { toggleSessionDropdown: toggleSessionDropdownAction, readSessionCookie };
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
   isLoggedIn: selectIsLoggedIn,

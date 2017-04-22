@@ -7,10 +7,10 @@ import ListDivider from 'react-toolbox/lib/list/ListDivider';
 import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
 
-import { selectAuthToken, selectIsLoggedIn } from '../selectors';
-import { logout } from '../actions';
-import { LOGIN_FORM_ACTION_PREFIX } from '../constants';
 import withClickAway from 'components/ClickAway';
+import { selectAuthToken, selectIsLoggedIn } from '../selectors';
+import { logout as logoutAction } from '../actions';
+import { LOGIN_FORM_ACTION_PREFIX } from '../constants';
 import LoginForm from '../components/LoginForm';
 
 const Container = styled.div`
@@ -26,11 +26,7 @@ const Container = styled.div`
     z-index: 10;
 `;
 
-const ListWrapper = styled(List)`
-    width: 90%;
-`;
-
-function Dropdown({ isLoggedIn, logout, onClickAway }) {
+function Dropdown({ isLoggedIn, logout, onClickAway, inputRef }) {
   const loginForm = () => <LoginForm
     submitActionPrefix={LOGIN_FORM_ACTION_PREFIX}
     onClickAway={onClickAway}
@@ -53,14 +49,16 @@ function Dropdown({ isLoggedIn, logout, onClickAway }) {
     </List>);
 
   return (
-    <Container>
-      { isLoggedIn ? userDropdown() : loginForm() }
-    </Container>
+    <div ref={inputRef}>
+      <Container>
+        { isLoggedIn ? userDropdown() : loginForm() }
+      </Container>
+    </div>
   );
 }
 
 // Connect
-const mapDispatchToProps = { logout };
+const mapDispatchToProps = { logout: logoutAction };
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
   isLoggedIn: selectIsLoggedIn,

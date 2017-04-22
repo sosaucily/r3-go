@@ -13,7 +13,7 @@ const Container = styled.div`
   padding-bottom: 30px;
 `;
 
-export default function ProductCard(props) {
+export default function ProductCard() {
   return (
     <Container>
       <Card style={{ width: '300px' }}>

@@ -6,7 +6,7 @@ const Container = styled.div`
     padding-right: 1rem;
 `;
 
-export default function renderInput({ input, label, meta: { touched, error }, ...custom }) {
+export default function renderInput({ input, label, meta: { error }, ...custom }) {
   return (
     <Container>
       <Input

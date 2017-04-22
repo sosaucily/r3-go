@@ -3,22 +3,14 @@
  */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { IntlProvider } from 'react-intl';
 
-import ReposList from 'components/ReposList';
 import { HomePage, mapDispatchToProps } from '../index';
 import { changeUsername } from '../actions';
 import { loadRepos } from '../../App/actions';
 
 describe('<HomePage />', () => {
-  it('should render the repos list', () => {
-    const renderedComponent = shallow(
-      <HomePage loading error={false} repos={[]} />
-    );
-    expect(renderedComponent.contains(<ReposList loading error={false} repos={[]} />)).toEqual(true);
-  });
-
   it('should render fetch the repos on mount if a username exists', () => {
     const submitSpy = jest.fn();
     mount(

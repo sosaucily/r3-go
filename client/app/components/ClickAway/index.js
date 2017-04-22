@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 const events = ['mousedown', 'touchstart'];
 
@@ -11,7 +10,6 @@ export default function withClickAway(WrappedComponent) {
     }
 
     componentDidMount() {
-      this.element = ReactDOM.findDOMNode(this);
       this.handleClickAway = this.createClickAwayHandler(this.onClickAway);
 
       attach(this.handleClickAway);
@@ -35,18 +33,22 @@ export default function withClickAway(WrappedComponent) {
 
     isDescendant(target) {
       if (this.isDoneRecursing(target)) {
-        return this.element === target;
+        return this.node === target;
       }
 
       return this.isDescendant(target.parentNode);
     }
 
     isDoneRecursing(target) {
-      return this.element === target || target.parentNode === null;
+      return this.node === target || target.parentNode === null;
     }
 
     render() {
-      return <WrappedComponent {...this.props} />;
+      return (
+        <div ref={(node) => { this.node = node; }}>
+          <WrappedComponent {...this.props} />
+        </div>
+      );
     }
   };
 }

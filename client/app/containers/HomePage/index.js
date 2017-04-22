@@ -1,8 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import { browserHistory, IndexLink, Link } from 'react-router';
+import { browserHistory } from 'react-router';
 import { addIndex, findIndex, equals, last, times } from 'ramda';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import Tab from 'react-toolbox/lib/tabs/Tab';
 import Tabs from 'react-toolbox/lib/tabs/Tabs';
 import Helmet from 'react-helmet';

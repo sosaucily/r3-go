@@ -7,7 +7,7 @@ const Container = styled.div`
   padding-bottom: 30px;
 `;
 
-export default function ProductCard({ title, subtitle }) {
+export default function ProductCard({ subtitle }) {
   return (
     <Container>
       <Card style={{ width: '300px' }}>

@@ -10,8 +10,8 @@ const initialState = fromJS({
 });
 
 const ACTION_HANDLERS = {
-  [FETCH_ACCOUNT_SUCCESS]: (state, { payload }) => state,
-  [FETCH_ACCOUNT_FAILURE]: (state, payload) => state,
+  [FETCH_ACCOUNT_SUCCESS]: (state, { payload }) => state, // eslint-disable-line no-unused-vars
+  [FETCH_ACCOUNT_FAILURE]: (state, payload) => state, // eslint-disable-line no-unused-vars
 };
 
 export default function accountReducer(state = initialState, action) {

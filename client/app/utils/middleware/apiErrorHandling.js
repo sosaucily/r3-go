@@ -2,7 +2,7 @@ import { showMessageBarMessage } from 'containers/MessageBar/actions';
 
 // Works with redux-api-middleware, taking action when requests fail
 const apiErrorHandlingMidddlware = (store) => (next) => (action) => {
-  const message = fetchError(action.payload) || false;
+  const message = action.payload ? fetchError(action.payload) || false : false;
   if (message) {
     store.dispatch(showMessageBarMessage(message));
   }

@@ -1,5 +1,4 @@
 import React from 'react';
-// import classnames from 'classnames'
 import styled from 'styled-components';
 
 import Avatar from 'components/Avatar';
@@ -15,9 +14,7 @@ const Container = styled.div`
     padding: 0 20px;
 `;
 
-export default function UserCard({ avatar, className, onClick, text }) {
-  // const classes = classnames(styles.card, className)
-
+export default function UserCard({ avatar, onClick, text }) {
   return (
     <Container onClick={onClick}>
       <Avatar image={avatar} />

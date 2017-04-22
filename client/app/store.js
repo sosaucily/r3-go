@@ -8,12 +8,12 @@ import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import formActionSaga from 'redux-form-saga';
 
-import createReducer from './reducers';
 import apiErrorHandlingMidddlware from 'utils/middleware/apiErrorHandling';
-
-import { injectAsyncSagas } from './utils/asyncInjectors';
 import footerSagas from 'containers/Footer/sagas';
 import sessionSagas from 'containers/Session/sagas';
+
+import createReducer from './reducers';
+import { injectAsyncSagas } from './utils/asyncInjectors';
 
 const sagaMiddleware = createSagaMiddleware();
 

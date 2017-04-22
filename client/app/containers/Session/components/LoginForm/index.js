@@ -17,7 +17,7 @@ const FormContainer = styled.form`
 `;
 
 function LoginForm(props) {
-  const { error, handleSubmit, submitActionPrefix, pristine, reset, submitting } = props;
+  const { error, handleSubmit, submitActionPrefix, submitting } = props;
   const formAction = createFormAction(submitActionPrefix);
 
   return (

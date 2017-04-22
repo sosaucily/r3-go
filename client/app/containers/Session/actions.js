@@ -1,6 +1,3 @@
-import Cookies from 'js-cookie';
-import { evolve, not } from 'ramda';
-
 import { action } from 'utils/helpers/actions';
 import {
   FETCH_BASIC_USER_INFO_REQUEST,
