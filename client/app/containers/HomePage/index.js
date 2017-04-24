@@ -1,121 +1,77 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- */
-
 import React from 'react';
+import { browserHistory } from 'react-router';
+import { addIndex, findIndex, equals, last, times } from 'ramda';
+import { injectIntl } from 'react-intl';
+import Tab from 'react-toolbox/lib/tabs/Tab';
+import Tabs from 'react-toolbox/lib/tabs/Tabs';
 import Helmet from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
-import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
-import H2 from 'components/H2';
-import ReposList from 'components/ReposList';
-import AtPrefix from './AtPrefix';
-import CenteredSection from './CenteredSection';
-import Form from './Form';
-import Input from './Input';
-import Section from './Section';
+import ContentBody from './ContentBody';
+import ProductCard from './ProductCard';
 import messages from './messages';
-import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
 
-export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  /**
-   * when initial state username is not null, submit the form to load repos
-   */
-  componentDidMount() {
-    if (this.props.username && this.props.username.trim().length > 0) {
-      this.props.onSubmitForm();
-    }
+const navs = ['women', 'men', 'influencer', 'about'];
+
+class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    const index = this.getIndexFromProps(props);
+    this.state = { tabIndex: index };
+  }
+
+  // Turn this into a higher order component for route-tab stuff
+  componentWillReceiveProps(nextProps) {
+    const index = this.getIndexFromProps(nextProps);
+    this.setState({ tabIndex: index });
+  }
+
+  getIndexFromProps({ routes }) {
+    const path = last(routes).path;
+    const index = findIndex(equals(path))(navs);
+    return (index === -1) ? 0 : index;
+  }
+
+  handleTabChange = (index) => {
+    this.setState({ tabIndex: index });
+    browserHistory.push(`/${navs[index]}`);
   }
 
   render() {
-    const { loading, error, repos } = this.props;
-    const reposListProps = {
-      loading,
-      error,
-      repos,
-    };
+    const { formatMessage } = this.props.intl;
 
+    const timesWithIndex = addIndex(times);
     return (
-      <article>
+      <div>
         <Helmet
           title="Home Page"
           meta={[
-            { name: 'description', content: 'A React.js Boilerplate application homepage' },
+            { name: 'description', content: 'A React/Redux/Rails Boilerplate application homepage' },
           ]}
         />
-        <div>
-          <CenteredSection>
-            <H2>
-              <FormattedMessage {...messages.startProjectHeader} />
-            </H2>
-            <p>
-              <FormattedMessage {...messages.startProjectMessage} />
-            </p>
-          </CenteredSection>
-          <Section>
-            <H2>
-              <FormattedMessage {...messages.trymeHeader} />
-            </H2>
-            <Form onSubmit={this.props.onSubmitForm}>
-              <label htmlFor="username">
-                <FormattedMessage {...messages.trymeMessage} />
-                <AtPrefix>
-                  <FormattedMessage {...messages.trymeAtPrefix} />
-                </AtPrefix>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="mxstbr"
-                  value={this.props.username}
-                  onChange={this.props.onChangeUsername}
-                />
-              </label>
-            </Form>
-            <ReposList {...reposListProps} />
-          </Section>
-        </div>
-      </article>
+        <Tabs
+          index={this.state.tabIndex}
+          onChange={this.handleTabChange}
+        >
+          <Tab label={formatMessage(messages.tabs.shopWomen)}>
+            <ContentBody>
+              {timesWithIndex((iter) => (<ProductCard key={iter} />), 9)}
+            </ContentBody>
+          </Tab>
+          <Tab label={formatMessage(messages.tabs.shopMen)}>
+            <ContentBody>
+              {timesWithIndex((iter) => (<ProductCard key={iter} />), 9)}
+            </ContentBody>
+          </Tab>
+          <Tab label={formatMessage(messages.tabs.influencer)}>
+            Some stuff about how to sign up.
+          </Tab>
+          <Tab label={formatMessage(messages.tabs.about)}>
+            More about our company
+          </Tab>
+        </Tabs>
+      </div>
     );
   }
 }
 
-HomePage.propTypes = {
-  loading: React.PropTypes.bool,
-  error: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.bool,
-  ]),
-  repos: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.bool,
-  ]),
-  onSubmitForm: React.PropTypes.func,
-  username: React.PropTypes.string,
-  onChangeUsername: React.PropTypes.func,
-};
-
-export function mapDispatchToProps(dispatch) {
-  return {
-    onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-    onSubmitForm: (evt) => {
-      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-      dispatch(loadRepos());
-    },
-  };
-}
-
-const mapStateToProps = createStructuredSelector({
-  repos: makeSelectRepos(),
-  username: makeSelectUsername(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-});
-
-// Wrap the component to inject dispatch and state into it
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default injectIntl(HomePage);

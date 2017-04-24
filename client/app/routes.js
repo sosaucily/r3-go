@@ -21,16 +21,32 @@ export default function createRoutes(store) {
       path: '/',
       name: 'home',
       getComponent(nextState, cb) {
+        import('containers/HomePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+
+      // Home route will load as a chunk,
+      // all child routes will come together as a second chunk
+      getChildRoutes(location, cb) {
+        System.import('containers/HomePage/routes')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/account',
+      name: 'account',
+      getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage/reducer'),
-          import('containers/HomePage/sagas'),
-          import('containers/HomePage'),
+          import('containers/Account/reducer'),
+          import('containers/Account/sagas'),
+          import('containers/Account'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('home', reducer.default);
+          injectReducer('account', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);
@@ -38,11 +54,10 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
-      path: '/features',
-      name: 'features',
-      getComponent(nextState, cb) {
-        import('containers/FeaturePage')
+      // Account route will load as a chunk,
+      // all child routes will come together as a second chunk
+      getChildRoutes(location, cb) {
+        System.import('containers/Account/routes')
           .then(loadModule(cb))
           .catch(errorLoading);
       },
