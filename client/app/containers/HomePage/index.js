@@ -12,7 +12,7 @@ import messages from './messages';
 
 const navs = ['women', 'men', 'influencer', 'about'];
 
-class HomeLayout extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     const index = this.getIndexFromProps(props);
@@ -74,4 +74,4 @@ class HomeLayout extends React.Component { // eslint-disable-line react/prefer-s
   }
 }
 
-export default injectIntl(HomeLayout);
+export default injectIntl(HomePage);
