@@ -1,6 +1,7 @@
 // Important modules this config uses
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 
@@ -69,6 +70,7 @@ module.exports = require('./webpack.base.babel')({
     new webpack.DefinePlugin({
       API_URL: JSON.stringify('https://r3-go.herokuapp.com'),
     }),
+    new CopyWebpackPlugin([{ from: 'public' }]),
   ],
 
   performance: {
