@@ -12,9 +12,9 @@ const apiErrorHandlingMidddlware = (store) => (next) => (action) => {
 function fetchError(payload) {
   let response = '';
 
-  if (payload.name === 'ApiError' || payload.name === 'SubmissionError') {
-    const errorData = payload.errors ? payload.errors : payload.response;
+  const errorData = payload.errors ? payload.errors : payload.response;
 
+  if (errorData && errorData.status) {
     if (errorData.status === 403) {
       response = 'Invalid request - 403';
     } else if (errorData.status === 401) {
