@@ -14,7 +14,7 @@ import messages from './messages';
 const navs = ['women', 'men', 'influencer', 'about'];
 
 const Container = styled.div`
-  div > section: {
+  div > section {
     outline: none;
   }
 `;
