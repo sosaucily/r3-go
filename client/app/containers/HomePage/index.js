@@ -5,12 +5,19 @@ import { injectIntl } from 'react-intl';
 import Tab from 'react-toolbox/lib/tabs/Tab';
 import Tabs from 'react-toolbox/lib/tabs/Tabs';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
 import ContentBody from './ContentBody';
 import ProductCard from './ProductCard';
 import messages from './messages';
 
 const navs = ['women', 'men', 'influencer', 'about'];
+
+const Container = styled.div`
+  div > section: {
+    outline: none;
+  }
+`;
 
 class HomePage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -41,7 +48,7 @@ class HomePage extends React.Component { // eslint-disable-line react/prefer-sta
 
     const timesWithIndex = addIndex(times);
     return (
-      <div>
+      <Container>
         <Helmet
           title="Home Page"
           meta={[
@@ -69,7 +76,7 @@ class HomePage extends React.Component { // eslint-disable-line react/prefer-sta
             More about our company
           </Tab>
         </Tabs>
-      </div>
+      </Container>
     );
   }
 }
