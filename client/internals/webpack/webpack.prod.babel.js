@@ -70,7 +70,7 @@ module.exports = require('./webpack.base.babel')({
     new webpack.DefinePlugin({
       API_URL: JSON.stringify('https://r3-go.herokuapp.com'),
     }),
-    new CopyWebpackPlugin([{ from: 'public' }]),
+    // new CopyWebpackPlugin([{ from: 'public' }]),
   ],
 
   performance: {
