@@ -20,7 +20,7 @@ Material Design
 
 
 Client system is based primarily on
-https://github.com/davezuko/react-redux-starter-kit
+https://github.com/react-boilerplate/react-boilerplate
 with hints of https://github.com/CodingZeal/react-boilerplate
 More details below.
 
