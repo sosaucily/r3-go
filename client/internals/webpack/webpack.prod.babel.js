@@ -66,6 +66,7 @@ module.exports = require('./webpack.base.babel')({
       safeToUseOptionalCaches: true,
 
       AppCache: false,
+      autoUpdate: 1000,
     }),
     new webpack.DefinePlugin({
       API_URL: JSON.stringify('https://r3-go.herokuapp.com'),
