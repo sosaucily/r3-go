@@ -2,7 +2,7 @@
   "boilerplate.containers.Account.loggedIn": "welcome {name}, you are authenticated and have a valid token",
   "boilerplate.containers.Account.loggedOut": "No session, no valid token, please log in",
   "boilerplate.containers.Footer.shaMessage": "deployed sha: {sha}",
-  "boilerplate.components.Header.header": "R3-GOOOO!",
+  "boilerplate.components.Header.header": "R3-GO!",
   "boilerplate.containers.HomePage.tabs.shopWomen": "Shop Women",
   "boilerplate.containers.HomePage.tabs.shopMen": "Shop Men",
   "boilerplate.containers.HomePage.tabs.influencer": "Become an Influencer",
