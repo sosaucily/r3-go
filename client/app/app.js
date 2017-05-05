@@ -139,9 +139,5 @@ if (process.env.NODE_ENV === 'production') {
   const OfflinePluginRuntime = require('offline-plugin/runtime'); // eslint-disable-line global-require
   OfflinePluginRuntime.install({
     onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
-    onUpdated: () => {
-      window.swUpdate = true;
-      return true;
-    },
   });
 }
