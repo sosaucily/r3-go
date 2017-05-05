@@ -66,10 +66,8 @@ module.exports = require('./webpack.base.babel')({
       safeToUseOptionalCaches: true,
 
       AppCache: false,
-      // autoUpdate: 1000,
-      // updateStrategy: 'changed',
       updateStrategy: 'changed',
-      autoUpdate: 1000 * 10,
+      autoUpdate: 1000 * 10, // After X milliseconds for SW to reload content
 
       ServiceWorker: {
         events: true,

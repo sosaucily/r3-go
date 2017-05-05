@@ -137,6 +137,7 @@ if (!window.Intl) {
 // we do not want it installed
 if (process.env.NODE_ENV === 'production') {
   const OfflinePluginRuntime = require('offline-plugin/runtime'); // eslint-disable-line global-require
+  // Somehow this tells the serviceworker to update changed files with a simple browser reload
   OfflinePluginRuntime.install({
     onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
   });
