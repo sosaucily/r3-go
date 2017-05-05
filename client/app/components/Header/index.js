@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 import CenteredSection from '../CenteredSection';
 import H1 from '../H1';
@@ -12,7 +12,15 @@ export default class Header extends React.Component {
       <div>
         <CenteredSection>
           <H1>
-            <Link to="/">
+            <Link
+              to="/"
+              onClick={(e) => {
+                // if (e.metaKey || e.ctrlKey) return;
+                e.preventDefault();
+                if (window.swUpdate) return (window.location = '/');
+                return browserHistory.history.push('/');
+              }}
+            >
               <FormattedMessage {...messages.header} />
             </Link>
           </H1>
