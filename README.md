@@ -45,14 +45,17 @@ Server is just a simple Rails 5 server for now. Considering basing
   root dir.
 
 ### Setting up for 'prod' deploy
+#### Deploying the Rails server
 * Set up a free heroku instance for the rails server
 * In the './deploy-server.sh' file, change the name of the heroku instance
   (the one you just created)
-* Run `./deploy-server` - Browse to your heroku server to make sure things are working
+* Run `deploy-server.sh` - Browse to your heroku server to make sure things are working
 * Run `heroku run rake db:migrate`
-* Add a sample user by connecting to the Heroku rails console `heroku run rails console` and issuing the command `User.create({email: 'test@test.com', password: 'password'})`
+* Add an admin user by connecting to the Heroku rails console `heroku run rails console` and issuing the command `User.create({email: 'admin@r3go.com', password: 'password'})`
+#### Deploying the JS client
 * Update the API_URL variable in 'webpack.prod.babel.js' with the URL of your heroku instance
-* Configure a free netlify instance for your JS client, configuring it to auto-deploy on push to your repo branch
+* Configure a free netlify instance for your JS client, configuring it to auto-deploy on push to a branch called 'r3-go/production'
+* Run the deploy-client.sh script
 * Browse to your netlify page to see your awesome website and test your login flow!
 
 ## More about React client
