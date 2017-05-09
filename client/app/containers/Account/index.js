@@ -24,7 +24,7 @@ class AccountInfo extends Component {
   }
 
   render() {
-    return <InfoCard subtitle={`sup ${this.getMessage()}`} />;
+    return <InfoCard subtitle={this.getMessage()} />;
   }
 }
 
