@@ -25,7 +25,7 @@ const ACTION_HANDLERS = {
          .set('name', '')
          .set('showSessionDropdown', false),
   [FETCH_BASIC_USER_INFO_SUCCESS]: (state, { payload }) =>
-    state.set('name', payload[0].email),
+    state.set('name', payload.email),
   [FETCH_BASIC_USER_INFO_FAILURE]: (state) =>
     state.set('name', ''),
 };

@@ -21,7 +21,7 @@ function authorize(email, password) {
 }
 
 function fetchBasicUserInfo(authToken) {
-  const endpoint = `${API_URL}/v1/users`; /* global API_URL */
+  const endpoint = `${API_URL}/v1/user`; /* global API_URL */
   const mergedOptions = addAuth(authToken, baseOptions);
 
   return request(endpoint, mergedOptions);
