@@ -241,6 +241,7 @@
     "ramda": "^0.22.1",
     "react": "15.4.1",
     "react-dom": "15.4.1",
+    "react-facebook-login": "^3.6.0",
     "react-helmet": "3.2.2",
     "react-intl": "2.1.5",
     "react-redux": "4.4.6",

@@ -1,11 +1,13 @@
 import { fromJS } from 'immutable';
+import { replace } from 'ramda';
 
 import {
   FETCH_BASIC_USER_INFO_FAILURE,
   FETCH_BASIC_USER_INFO_SUCCESS,
   LOGIN_SUCCESS,
-  TOGGLE_SESSION_FORM,
   LOGOUT_SUCCESS,
+  SET_FACEBOOK_AUTH_DATA,
+  TOGGLE_SESSION_FORM,
 } from './constants';
 
 const initialState = fromJS({
@@ -23,11 +25,18 @@ const ACTION_HANDLERS = {
   [LOGOUT_SUCCESS]: (state) =>
     state.set('authToken', '')
          .set('name', '')
-         .set('showSessionDropdown', false),
+         .set('showSessionDropdown', false)
+         .set('avatar', '')
+         .set('userDataBlob', ''),
   [FETCH_BASIC_USER_INFO_SUCCESS]: (state, { payload }) =>
-    state.set('name', payload.email),
+    state.set('name', payload.email)
+         .set('avatar', payload.avatarUrl)
+         .set('userDataBlob', replace(/,/g, ', ', JSON.stringify(payload))),
   [FETCH_BASIC_USER_INFO_FAILURE]: (state) =>
     state.set('name', ''),
+  [SET_FACEBOOK_AUTH_DATA]: (state, { accessToken, userID }) =>
+    state.set('fb_token', accessToken)
+         .set('fb_uid', userID),
 };
 
 export default function sessionReducer(state = initialState, action) {

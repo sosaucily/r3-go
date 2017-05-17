@@ -17,14 +17,26 @@ const selectShowSessionDropdown = createSelector(
   (sessionState) => sessionState.get('showSessionDropdown')
 );
 
+const selectUserDataBlob = createSelector(
+  selectSession,
+  (sessionState) => sessionState.get('userDataBlob')
+);
+
 const selectIsLoggedIn = createSelector(
   selectAuthToken,
   (authToken) => authToken !== ''
 );
 
+const selectAvatar = createSelector(
+  selectSession,
+  (sessionState) => sessionState.get('avatar')
+);
+
 export {
   selectAuthToken,
+  selectAvatar,
   selectIsLoggedIn,
   selectName,
   selectShowSessionDropdown,
+  selectUserDataBlob,
 };

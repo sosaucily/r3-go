@@ -8,6 +8,7 @@ import {
   toggleSessionDropdown as toggleSessionDropdownAction } from './actions';
 import {
   selectAuthToken,
+  selectAvatar,
   selectIsLoggedIn,
   selectName,
   selectShowSessionDropdown,
@@ -33,6 +34,7 @@ class Session extends React.Component {
 
   render() {
     const {
+      avatar,
       isLoggedIn,
       name,
       showSessionDropdown,
@@ -43,7 +45,7 @@ class Session extends React.Component {
 
     return (
       <Container>
-        { <UserCard onClick={toggleSessionDropdown} text={userCardText} />}
+        { <UserCard avatar={avatar} onClick={toggleSessionDropdown} text={userCardText} />}
         { showSessionDropdown && <Dropdown onClickAway={toggleSessionDropdown} />}
       </Container>
     );
@@ -54,6 +56,7 @@ class Session extends React.Component {
 const mapDispatchToProps = { toggleSessionDropdown: toggleSessionDropdownAction, readSessionCookie };
 const mapStateToProps = createStructuredSelector({
   authToken: selectAuthToken,
+  avatar: selectAvatar,
   isLoggedIn: selectIsLoggedIn,
   name: selectName,
   showSessionDropdown: selectShowSessionDropdown,

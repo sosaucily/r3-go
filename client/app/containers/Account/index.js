@@ -6,7 +6,7 @@ import { injectIntl } from 'react-intl';
 import InfoCard from './InfoCard';
 import messages from './messages';
 import { fetchAccountInfo } from './actions';
-import { selectIsLoggedIn, selectName } from '../Session/selectors';
+import { selectName, selectUserDataBlob } from '../Session/selectors';
 
 class AccountInfo extends Component {
   componentDidMount() {
@@ -24,7 +24,8 @@ class AccountInfo extends Component {
   }
 
   render() {
-    return <InfoCard subtitle={this.getMessage()} />;
+    const { text } = this.props;
+    return <InfoCard subtitle={this.getMessage()} text={text} />;
   }
 }
 
@@ -34,7 +35,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = createStructuredSelector({
   name: selectName,
-  isLoggedIn: selectIsLoggedIn,
+  text: selectUserDataBlob,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AccountInfo));
