@@ -6614,6 +6614,10 @@ react-dom@15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-facebook-login@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-3.6.0.tgz#86cd8b561f9f53ef9aa7f3f7c21b66d0947d07c6"
+
 react-helmet@3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-3.2.2.tgz#1fc4646cbc5d26246ab45d5a84b504ed639810e6"

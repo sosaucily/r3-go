@@ -38,6 +38,7 @@ Server is just a simple Rails 5 server for now. Considering basing
 * Fork or clone the repo
 * In the 'server' directory, install the gems with `bundle`
   (hint: consider creating a gemset for housekeeping)
+* Create a figaro config file for your environment variables with `bundle exec figaro install` and then adding the basic settings as shown below.
 * In the 'client' directory, install the node modules with yarn install
 * Run the rails server; cd to 'server' and run `env PORT=3001 rails server`
 * In another terminal window, run the React client; cd to 'client' and run `yarn start`
@@ -51,6 +52,7 @@ Server is just a simple Rails 5 server for now. Considering basing
   (the one you just created)
 * Run `deploy-server.sh` - Browse to your heroku server to make sure things are working
 * Run `heroku run rake db:migrate`
+* Push env variables to heroku with `figaro heroku:set -e production`
 * Add an admin user by connecting to the Heroku rails console `heroku run rails console` and issuing the command `User.create({email: 'admin@r3go.com', password: 'password'})`
 #### Deploying the JS client
 * Update the API_URL variable in 'webpack.prod.babel.js' with the URL of your heroku instance
@@ -65,4 +67,6 @@ See the 'API_URL' example in the webpack.<env>.babel.js files.
 WIP
 
 ## More about Rails server
+WIP
+### Figaro config settings
 WIP

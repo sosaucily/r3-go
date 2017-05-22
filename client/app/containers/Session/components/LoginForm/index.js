@@ -38,7 +38,7 @@ function LoginForm(props) {
       </FieldContainer>
       {error && !submitting && <ErrorField>{error}</ErrorField>}
       <ButtonContainer>
-        <Button label="Login" disabled={submitting} accent type="submit" />
+        <Button label="Login with Password" disabled={submitting} accent raisedg type="submit" />
       </ButtonContainer>
     </FormContainer>
   );

@@ -12,6 +12,7 @@ import { selectAuthToken, selectIsLoggedIn } from '../selectors';
 import { logout as logoutAction } from '../actions';
 import { LOGIN_FORM_ACTION_PREFIX } from '../constants';
 import LoginForm from '../components/LoginForm';
+import FacebookAuthButton from './FacebookAuthButton';
 
 const Container = styled.div`
     background-color: white;
@@ -27,10 +28,14 @@ const Container = styled.div`
 `;
 
 function Dropdown({ isLoggedIn, logout, onClickAway, inputRef }) {
-  const loginForm = () => <LoginForm
-    submitActionPrefix={LOGIN_FORM_ACTION_PREFIX}
-    onClickAway={onClickAway}
-  />;
+  const loginForm = () => (
+    <div>
+      <LoginForm
+        submitActionPrefix={LOGIN_FORM_ACTION_PREFIX}
+        onClickAway={onClickAway}
+      />
+      <FacebookAuthButton />
+    </div>);
 
   const userDropdown = () => (
     <List selectable ripple>

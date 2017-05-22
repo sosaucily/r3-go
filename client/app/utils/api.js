@@ -20,6 +20,14 @@ function authorize(email, password) {
   return request(endpoint, mergedOptions);
 }
 
+function fbAuthorize(token, userId, moreData) {
+  const endpoint = `${API_URL}/v1/login`; /* global API_URL */
+  const body = JSON.stringify({ token, userId, ...moreData, grantType: 'facebook' });
+  const mergedOptions = merge(baseOptions, { method: 'POST', body });
+
+  return request(endpoint, mergedOptions);
+}
+
 function fetchBasicUserInfo(authToken) {
   const endpoint = `${API_URL}/v1/user`; /* global API_URL */
   const mergedOptions = addAuth(authToken, baseOptions);
@@ -91,6 +99,7 @@ function request(url, options) {
 export default {
   authorize,
   deauthorize,
+  fbAuthorize,
   fetchBasicUserInfo,
   fetchAccountInfo,
   genericRequest,
