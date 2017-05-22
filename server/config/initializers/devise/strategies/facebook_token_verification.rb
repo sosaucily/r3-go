@@ -34,8 +34,8 @@ module Devise
 
       protected
 
-      def create_user
-        User.create(User.scrub_params(params))
+      def create_user(params)
+        User.create(User.scrub_params_from_fb(params))
       end
 
     end

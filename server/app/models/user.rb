@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   def update_with_fb_data(params)
     scrubbed_params = User.scrub_params_from_fb(params)
-    params_to_update = scrubbed_params.select {|k,_| self[k].nil? }
+    params_to_update = scrubbed_params.select {|k,_| self[k].nil?}
     self.update(params_to_update)
   end
 
