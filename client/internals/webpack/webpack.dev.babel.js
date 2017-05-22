@@ -25,6 +25,7 @@ const plugins = [
   }),
   new webpack.DefinePlugin({
     API_URL: JSON.stringify('http://localhost:3001'),
+    FACEBOOK_APP_ID: '347163215686508',
   }),
 ];
 

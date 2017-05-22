@@ -76,6 +76,7 @@ module.exports = require('./webpack.base.babel')({
     }),
     new webpack.DefinePlugin({
       API_URL: JSON.stringify('https://r3-go.herokuapp.com'),
+      FACEBOOK_APP_ID: '347163215686508',
     }),
     new CopyWebpackPlugin([{ from: 'public' }]),
   ],

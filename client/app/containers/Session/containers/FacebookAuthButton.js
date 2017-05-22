@@ -16,7 +16,7 @@ function FacebookAuthButton({ setFacebookAuthData }) {
   return (
     <ButtonContainer>
       <FacebookLogin
-        appId="347163215686508"
+        appId={FACEBOOK_APP_ID} /* global FACEBOOK_APP_ID */
         autoLoad={false}
         fields="name,first_name,last_name,email,picture"
         scope="public_profile,email"
