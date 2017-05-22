@@ -9,8 +9,7 @@ class SessionsController < Devise::SessionsController
       return invalid_login_attempt unless @user
     elsif params[:grantType].eql? 'password'
       @user = User.find_for_database_authentication(email: params[:email])
-      return invalid_login_attempt unless @user
-      return invalid_login_attempt unless @user.valid_password?(params[:password])
+      return invalid_login_attempt unless @user and @user.valid_password?(params[:password])
     else
       return invalid_login_attempt
     end
