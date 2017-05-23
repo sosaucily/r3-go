@@ -1,5 +1,4 @@
 import { fromJS } from 'immutable';
-import { replace } from 'ramda';
 
 import {
   FETCH_BASIC_USER_INFO_FAILURE,
@@ -31,7 +30,7 @@ const ACTION_HANDLERS = {
   [FETCH_BASIC_USER_INFO_SUCCESS]: (state, { payload }) =>
     state.set('name', payload.email)
          .set('avatar', payload.avatarUrl)
-         .set('userDataBlob', replace(/,/g, ', ', JSON.stringify(payload))),
+         .set('userDataBlob', JSON.stringify(payload, null, 2)),
   [FETCH_BASIC_USER_INFO_FAILURE]: (state) =>
     state.set('name', ''),
   [SET_FACEBOOK_AUTH_DATA]: (state, { accessToken, userID }) =>
