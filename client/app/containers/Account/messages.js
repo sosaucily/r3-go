@@ -9,4 +9,14 @@ export default defineMessages({
     id: 'boilerplate.containers.Account.loggedOut',
     defaultMessage: 'No session, no valid token, please log in',
   },
+  tabs: {
+    personal: {
+      id: 'boilerplate.containers.Account.tabs.personal',
+      defaultMessage: 'Personal Info',
+    },
+    orders: {
+      id: 'boilerplate.containers.Account.tabs.orders',
+      defaultMessage: 'Order History',
+    },
+  },
 });

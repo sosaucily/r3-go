@@ -11,11 +11,11 @@ const Container = styled.div`
 export default function ProductCard({ subtitle, text }) {
   return (
     <Container>
-      <Card style={{ width: '300px' }}>
+      <Card style={{ width: '100%' }}>
         <CardTitle
           subtitle={subtitle}
         />
-        <CardText>{text}</CardText>
+        <CardText><pre>{text}</pre></CardText>
       </Card>
     </Container>
   );
