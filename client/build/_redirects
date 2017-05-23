@@ -1,2 +1,2 @@
-/admin/* http://r3-go.herokuapp.com/admin/* 200
+/admin/* http://r3-go.herokuapp.com/admin/:splat 200
 /*    /index.html   200
