@@ -13,7 +13,7 @@ class SessionsController < Devise::SessionsController
     else
       return invalid_login_attempt
     end
-    render json: { auth_token: JWTWrapper.encode({user_id: @user.id}) }
+    render json: { auth_token: JWTWrapper.encode({user_id: @user.id}), auth_token_exp_seconds: ENV['jwt_expiration_seconds'] }
   end
 
   def destroy

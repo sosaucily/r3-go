@@ -2,6 +2,7 @@ import { take, takeEvery, call, put, cancelled, fork, select } from 'redux-saga/
 import { delay } from 'redux-saga';
 import { SubmissionError } from 'redux-form/immutable';
 import Cookies from 'js-cookie';
+import moment from 'moment';
 
 import Api from 'utils/api';
 import { selectAuthToken } from './selectors';
@@ -41,14 +42,17 @@ function* toggleSessionDropdown() {
   }
 }
 
-function* setAuthCookie({ fbAuthToken, fbUserId, authToken }) {
+function* setAuthCookie({ fbAuthToken, fbUserId, authToken, authTokenExpSeconds }) {
   Cookies.set('authToken', authToken);
+  const expTime = moment().add(authTokenExpSeconds, 'seconds');
+  Cookies.set('authTokenExpTime', expTime.format());
   Cookies.set('fbAuthToken', fbAuthToken);
   Cookies.set('fbUserId', fbUserId);
 }
 
 function* clearAuthCookie() {
   Cookies.remove('authToken');
+  Cookies.remove('authTokenExpTime');
   Cookies.remove('fbAuthToken');
   Cookies.remove('fbUserId');
 }
