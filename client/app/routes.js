@@ -2,6 +2,11 @@
 // They are all wrapped in the App component, which should contain the navbar etc
 // See http://blog.mxstbr.com/2016/01/react-apps-with-pages for more information
 // about the code splitting business
+import Cookies from 'js-cookie';
+import moment from 'moment';
+
+import { showMessageBarMessage } from 'containers/MessageBar/actions';
+import { logout, openSessionDropdown } from 'containers/Session/actions';
 import { getAsyncInjectors } from './utils/asyncInjectors';
 
 const errorLoading = (err) => {
@@ -10,6 +15,17 @@ const errorLoading = (err) => {
 
 const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
+};
+
+const requireAuth = (store) => {
+  return (replace, nextState) => {
+    const expTime = Cookies.get('authTokenExpTime');
+
+    if (!expTime || moment(expTime).isBefore(moment())) {
+      store.dispatch(showMessageBarMessage('You have been logged out: please log back in'));
+      store.dispatch(logout());
+    }
+  };
 };
 
 export default function createRoutes(store) {
@@ -36,6 +52,8 @@ export default function createRoutes(store) {
     }, {
       path: '/account',
       name: 'account',
+      onEnter: requireAuth(store),
+      onChange: requireAuth(store),
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           import('containers/Account/reducer'),

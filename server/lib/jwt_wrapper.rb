@@ -2,10 +2,10 @@ module JWTWrapper
   extend self
 
   def encode(payload, expiration = nil)
-    expiration ||= ENV['jwt_expiration_hours']
+    expiration ||= ENV['jwt_expiration_seconds']
 
     payload = payload.dup
-    payload['exp'] = expiration.to_i.hours.from_now.to_i
+    payload['exp'] = expiration.to_i.seconds.from_now.to_i
 
     JWT.encode payload, ENV['jwt_secret']
   end

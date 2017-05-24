@@ -1,4 +1,3 @@
-// app/pages/Settings/routes
 import Account from './index';
 
 export default [
