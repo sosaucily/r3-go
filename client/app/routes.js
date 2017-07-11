@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import moment from 'moment';
 
 import { showMessageBarMessage } from 'containers/MessageBar/actions';
-import { logout, openSessionDropdown } from 'containers/Session/actions';
+import { logout } from 'containers/Session/actions';
 import { getAsyncInjectors } from './utils/asyncInjectors';
 
 const errorLoading = (err) => {
@@ -17,16 +17,15 @@ const loadModule = (cb) => (componentModule) => {
   cb(null, componentModule.default);
 };
 
-const requireAuth = (store) => {
-  return (replace, nextState) => {
-    const expTime = Cookies.get('authTokenExpTime');
+const requireAuth = (store) => (replace, nextState) => { // eslint-disable-line no-unused-vars
+  const expTime = Cookies.get('authTokenExpTime');
 
-    if (!expTime || moment(expTime).isBefore(moment())) {
-      store.dispatch(showMessageBarMessage('You have been logged out: please log back in'));
-      store.dispatch(logout());
-    }
-  };
+  if (!expTime || moment(expTime).isBefore(moment())) {
+    store.dispatch(showMessageBarMessage('You have been logged out: please log back in'));
+    store.dispatch(logout());
+  }
 };
+
 
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
