@@ -2,26 +2,25 @@
 
 ## A full-featured react / rails framework
 
-Based on some great, popular projects from around the nets, combined together for awesomeness and speed.
+Based on some popular projects from around the nets, combined together for awesomeness and speed.
 
-* Rails Backend, React/Redux client.  
+* Rails Backend, React/Redux/Saga client.  
 
 * Hosted completely independently on Heroku and Netlify, respectively.
 
-* React-toolbox for quickly leveraging redux friendly components styled with
-Material Design
+* React-toolbox for quickly leveraging redux friendly components styled with Material Design
 
 * Various features you "always" need are done! Including
- - Authentication system, email/pass using JWT tokens, ready to go, as well as Facebook(wip) and Google(wip)
+ - Authentication system, email/pass using JWT tokens, ready to go, as well as Facebook and Google(wip)
  - Simple deploy scripts, done!
- - Admin portal(wip)
+ - Rails admin portal
 
 
 Client system is based primarily on
 https://github.com/react-boilerplate/react-boilerplate
 
 Server is just a simple Rails 5 server for now. Considering basing
- the rails system on https://github.com/thoughtbot/suspenders but for now that seems like overkill
+ the rails system on https://github.com/thoughtbot/suspenders but for now it seems like overkill
 
 ## Requirements
 
