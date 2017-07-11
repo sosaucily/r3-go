@@ -11,7 +11,7 @@ import messages from './messages';
 
 const GithubRepoLink = styled.div`
   position: absolute;
-  right: 150px;
+  left: 50px;
   top: 0;
 `;
 
