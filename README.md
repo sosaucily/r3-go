@@ -37,22 +37,28 @@ Server is just a simple Rails 5 server for now. Considering basing
 * Fork or clone the repo
 * In the 'server' directory, install the gems with `bundle`
   (hint: consider creating a gemset for housekeeping)
-* Create a figaro config file for your environment variables with `bundle exec figaro install` and then adding the basic settings as shown below.
+* The repo is currently configured to work with postgres, but feel free to change that. You will need to initialize a database. go into the database.yml file and set the name of your database. Run `rake db:create` then `rake db:migrate` then `rake db:seed`
+* Create a figaro config file for your environment variables with `bundle exec figaro install`. This will generate for you an application.yml file which will feed environment variables to your application. Do not check this file into github. For the content of this file, see the sample_application.yml file and replace the values in application.yml as needed.
 * In the 'client' directory, install the node modules with yarn install
 * Run the rails server; cd to 'server' and run `env PORT=3001 rails server`
 * In another terminal window, run the React client; cd to 'client' and run `yarn start`
 * If you like foreman, do both at once with foreman start Procfile in the
   root dir.
 
+#### Facebook auth
+You'll need to create a facebook application, and test application, for your site. Make sure to add http://localhost:3000 to the Website -> Site URL field in order to get the callbacks working correctly on your development server. Use the 'test app' key/secret in your application.yml default section, and the production key/secret under production.
+
+You will also need to put the Facebook key in webpack.dev.babel.js and webpack.prod.babel.js
+
 ### Setting up for 'prod' deploy
 #### Deploying the Rails server
-* Set up a free heroku instance for the rails server
-* In the './deploy-server.sh' file, change the name of the heroku instance
-  (the one you just created)
-* Run `deploy-server.sh` - Browse to your heroku server to make sure things are working
+* Set up a free heroku instance for the rails server on heroku.com.
+* Connect your server app to heroku with `heroku git:remote -a <yourAppNameInHeroku>`
+* Push env variables to heroku: cd into 'server' and run `figaro heroku:set -e production`
+* Back to the root dir, run `deploy-server.sh` ** https://stackoverflow.com/questions/28417845/pushing-a-large-github-repo-fails-with-unable-to-push-to-unqualified-destinatio if you get an error pushing to heroku.
 * Run `heroku run rake db:migrate`
-* Push env variables to heroku with `figaro heroku:set -e production`
-* Add an admin user by connecting to the Heroku rails console `heroku run rails console` and issuing the command `User.create({email: 'admin@r3go.com', password: 'password'})`
+* Run `heroku run rake db:seed`
+* Add an admin user by connecting to the Heroku rails console at herokupp.<yourapp>.com/admin
 #### Deploying the JS client
 * Update the API_URL variable in 'webpack.prod.babel.js' with the URL of your heroku instance
 * Configure a free netlify instance for your JS client, configuring it to auto-deploy on push to a branch called 'r3-go/production'

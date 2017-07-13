@@ -1,0 +1,19 @@
+# Add configuration values here, as shown below.
+
+jwt_secret: 'super random key' # Mandatory
+jwt_expiration_seconds: '86400' # 1 day # Mandatory
+secret_key_base: "<run `bundle exec rake secret` and paste here, within quotes>" # Mandatory
+
+FACEBOOK_KEY: "<Facebook dev app key, for doing FB auth. Generate on facebook's developer site>"
+FACEBOOK_SECRET: "<Facebook dev app secret, for doing FB auth>"
+
+test:
+  secret_key_base: "<run `bundle exec rake secret` and paste here, within quotes>" # Mandatory
+
+production:
+  jwt_secret: 'super random key' # Mandatory
+  jwt_expiration_seconds: '604800' # 1 week # Mandatory
+  secret_key_base: "<run `bundle exec rake secret` and paste here, within quotes>" # Mandatory
+
+  FACEBOOK_KEY: "<Facebook app key, for doing FB auth. Generate on facebook's developer site>"
+  FACEBOOK_SECRET: "<Facebook app secret, for doing FB auth>"
