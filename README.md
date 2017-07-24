@@ -46,7 +46,7 @@ Server is just a simple Rails 5 server for now. Considering basing
   root dir.
 
 #### Facebook auth
-You'll need to create a facebook application, and test application, for your site. Make sure to add http://localhost:3000 to the Website -> Site URL field in order to get the callbacks working correctly on your development server. Use the 'test app' key/secret in your application.yml default section, and the production key/secret under production.
+You'll need to create a facebook application, and test application, for your site. Make sure to add http://localhost:3000 to the Website -> Site URL field in order to get the callbacks working correctly on your development server, and add your fully qualified url in the "Valid OAuth redirect URIs" field in the Facebook Login -> Settings sectoin. Use the 'test app' key/secret in your application.yml default section, and the production key/secret under production.
 
 You will also need to put the Facebook key in webpack.dev.babel.js and webpack.prod.babel.js
 
@@ -60,6 +60,7 @@ You will also need to put the Facebook key in webpack.dev.babel.js and webpack.p
 * Run `heroku run rake db:seed`
 * Add an admin user by connecting to the Heroku rails console at herokupp.<yourapp>.com/admin
 #### Deploying the JS client
+* Update the deploy-client.sh file to point to the correct repo name you will use in netlify.
 * Update the API_URL variable in 'webpack.prod.babel.js' with the URL of your heroku instance
 * Configure a free netlify instance for your JS client, configuring it to auto-deploy on push to a branch called 'r3-go/production'
 * Run the deploy-client.sh script
